@@ -11,6 +11,7 @@ namespace Entidades.Presentador
     {
         IMenuPrincipal menu;
         List<Partida> partidas;
+        List<Partida> partidasTotales;
         public static List<Usuario> usuarios;
         //List<Usuario> jugadores;
         public static Usuario usuarioActivo;
@@ -22,13 +23,14 @@ namespace Entidades.Presentador
             usuarioActivo = PresentadorLogin.usuarioActivo;
             usuarios = PresentadorLogin.usuarios;
             partidas = new List<Partida>();
+            partidasTotales = new List<Partida>();
         }
 
         private int ObtenerUltimoID()
         {
-            foreach (Partida partida in partidas)
+            foreach (Partida partida in partidasTotales)
             {
-                if(partidas.Last() == partida)
+                if(partidasTotales.Last() == partida)
                 {
                     return partida.Id;
                 }
@@ -44,7 +46,7 @@ namespace Entidades.Presentador
             try
             {
                 ConexionPartidas conexionPartidas = new ConexionPartidas();
-                partidas = conexionPartidas.ObtenerPartidas(); 
+                partidasTotales = conexionPartidas.ObtenerPartidas(); 
             }
             catch(Exception ex)
             {
@@ -134,6 +136,7 @@ namespace Entidades.Presentador
             Partida partida = partidas[indice];
             partida.Id = (ObtenerUltimoID() + 1);
             partidas.Remove(partida);
+            partidasTotales.Add(partida);
 
             return partida;
         }

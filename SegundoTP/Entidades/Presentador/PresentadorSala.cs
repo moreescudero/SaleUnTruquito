@@ -170,14 +170,12 @@ namespace Entidades.Presentador
         /// <param name="indiceOtroJug"></param>
         private void VerificarEnvido(int indice, int indiceOtroJug)
         {
-            //Random rnd = new Random();
-            //int random = rnd.Next(1, 3);
-
             if (partida.CantarEnvido(jugadores[indice]))
             {
-                if (partida.DecirEnvido(jugadores[indice]) >= 28/* && random == 1*/)
+                if (partida.DecirEnvido(jugadores[indice]) >= 28)
                 {
                     jugadores[indice].CantoFaltaEnvido = true;
+                    jugadores[indice].CantSacoFaltaEnvido++;
                 }
                 else
                 {
@@ -186,9 +184,10 @@ namespace Entidades.Presentador
             }
             else if (partida.CantarEnvido(jugadores[indiceOtroJug]))
             {
-                if (partida.DecirEnvido(jugadores[indiceOtroJug]) >= 28/* && random == 1*/)
+                if (partida.DecirEnvido(jugadores[indiceOtroJug]) >= 28)
                 {
                     jugadores[indiceOtroJug].CantoFaltaEnvido = true;
+                    jugadores[indiceOtroJug].CantSacoFaltaEnvido++;
                 }
                 else
                 {

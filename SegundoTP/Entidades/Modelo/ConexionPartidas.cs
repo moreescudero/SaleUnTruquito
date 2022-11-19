@@ -49,8 +49,46 @@ namespace Entidades.Modelo
                     int id = dataReader.GetInt32(0);
                     string ganador = dataReader.GetString(1);
                     DateTime fecha = dataReader.GetDateTime(2);
+                    string perdedor = dataReader.GetString(3);
 
-                    Partida partida = new Partida(id, ganador, fecha);
+                    Partida partida = new Partida(id, ganador, fecha, perdedor);
+                    partidas.Add(partida);
+                }
+
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+                return partidas;
+            }
+            catch (Exception)
+            {
+                throw new Exception("ocurrio un error en la obtención de partidas");
+            }
+        }
+
+        public List<Partida> ObtenerPartidas(string ganadorPartida)
+        {
+            try
+            {
+                List<Partida> partidas = new List<Partida>();
+                connection.Open();
+
+                Comando("select * from Partidas where Ganador = @ganador");
+
+                command.Parameters.Clear();
+                command.Parameters.AddWithValue("@Ganador", ganadorPartida);
+
+                SqlDataReader dataReader = command.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    int id = dataReader.GetInt32(0);
+                    string ganador = dataReader.GetString(1);
+                    DateTime fecha = dataReader.GetDateTime(2);
+                    string perdedor = dataReader.GetString(3);
+
+                    Partida partida = new Partida(id, ganador, fecha, perdedor);
                     partidas.Add(partida);
                 }
 
@@ -77,11 +115,12 @@ namespace Entidades.Modelo
             {
                 connection.Open();
 
-                Comando("insert into Partidas (Ganador, Fecha) values(@Ganador, @Fecha)");
+                Comando("insert into Partidas (Ganador, Fecha, Perdedor) values(@Ganador, @Fecha, @Perdedor)");
 
                 command.Parameters.Clear();
                 command.Parameters.AddWithValue("@Ganador", partida.Ganador);
                 command.Parameters.AddWithValue("@Fecha", partida.Fecha);
+                command.Parameters.AddWithValue("@Perdedor", partida.Perdedor);
 
                 command.ExecuteNonQuery();
 

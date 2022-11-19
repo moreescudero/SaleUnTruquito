@@ -14,8 +14,9 @@ namespace Entidades.Modelo
         List<Usuario> jugadores = new List<Usuario>();
         DateTime fecha;
         string? ganador;
-        public event Action<List<Carta>> eventoMazo; 
-        public event Action eventoFinalizarPartida; 
+        string? perdedor;
+        event Action<List<Carta>> eventoMazo; 
+        event Action eventoFinalizarPartida; 
 
         public Partida (int id)
         {
@@ -28,10 +29,11 @@ namespace Entidades.Modelo
             eventoFinalizarPartida += FinalizarPartida;
         }
 
-        public Partida(int id,  string ganador, DateTime fecha) : this (id)
+        public Partida(int id,  string ganador, DateTime fecha, string? perdedor) : this (id)
         {
             activa = false;
             this.ganador = ganador;
+            this.perdedor = perdedor;
             this.fecha = fecha;
         }
         public Partida(int id, List<Usuario> jugadores, DateTime fecha) : this(id)
@@ -56,6 +58,12 @@ namespace Entidades.Modelo
         {
             get { return ganador; }
             set { ganador = value; }
+        }
+
+        public string? Perdedor
+        {
+            get { return perdedor; }
+            set { perdedor = value; }
         }
 
         public DateTime Fecha
@@ -135,6 +143,7 @@ namespace Entidades.Modelo
         /// <param name="mazo"></param>
         public void Repartir(List<Carta> mazo)
         {
+            bool salioElAncho = false;
             if (mazo is not null)
             {
                 for (int i = 0; i < 6; i++)
@@ -142,10 +151,20 @@ namespace Entidades.Modelo
                     if (i < 3)
                     {
                         jugadores[0].Cartas.Add(mazo[i]);
+                        if (mazo[i].Valor == EValores.AnchoEspada && !salioElAncho)
+                        {
+                            jugadores[0].CantAnchosDeEspada++;
+                            salioElAncho = true;
+                        }
                     }
                     else
                     {
                         jugadores[1].Cartas.Add(mazo[i]);
+                        if (mazo[i].Valor == EValores.AnchoEspada && !salioElAncho)
+                        {
+                            jugadores[1].CantAnchosDeEspada++;
+                            salioElAncho = true;
+                        }
                     }
                 }
             }
@@ -446,12 +465,14 @@ namespace Entidades.Modelo
             {
                 jugadores[0].PartidasGanadas++;
                 ganador = jugadores[0].NombreUsuario;
+                perdedor = jugadores[1].NombreUsuario;
                 jugadores[1].PartidasPerdidas++;
             }
             else if(jugadores[0].PuntosPartida < jugadores[1].PuntosPartida)
             {
                 jugadores[1].PartidasGanadas++;
                 ganador = jugadores[1].NombreUsuario;
+                perdedor = jugadores[0].NombreUsuario;
                 jugadores[0].PartidasPerdidas++;
             }
         }

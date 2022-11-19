@@ -18,7 +18,6 @@ namespace Vista
         PresentadorMenuPrincipal presentador;
         List<Task> listaTareas;
         int indice;
-        //Object obj;
 
         public Frm_MenuPrincipal()
         {
@@ -51,11 +50,6 @@ namespace Vista
 
         private async void btn_AbirSala_Click(object sender, EventArgs e)
         {
-            //cuando haga multihilo este boton va a abrir segun partida existente en el dgv
-            //Frm_Sala frm_Sala = new Frm_Sala();
-            //frm_Sala.ShowDialog();
-            //presentador.CargarDataGrid();
-
             listaTareas.Add(new Task(() =>
             {
                 Frm_Sala frm_sala = new Frm_Sala(presentador.DevolverPartidaElegida(indice));
@@ -121,7 +115,7 @@ namespace Vista
 
         private void btn_Estadistica_Click(object sender, EventArgs e)
         {
-            Frm_Partida frm_Estadistica = new Frm_Partida();
+            Frm_Estadistica frm_Estadistica = new Frm_Estadistica();
             this.Hide();
             frm_Estadistica.ShowDialog();
             this.Show();

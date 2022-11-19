@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "V3bs51vz4nyzJ/eH+pWrQSUim6NDixXbJd7WRo3AAiEAAfF26bolwkCcAzvq3rC/MfhVFCfthq+1KHSyriQq/A==",
+  "dgSpecHash": "2iaMkG+ot+RiyJ5ScyRIJM2Y+hm0RHUc90Sf3QyX9n0Jl125YCYPvRpotjciV5d8bb1Iy2aV/YSkvHjsC8884w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\more\\Desktop\\Morena.Escudero.Parcial\\SegundoTP\\Vista\\Vista.csproj",
+  "projectFilePath": "C:\\Users\\more\\Desktop\\TP2.Morena.Escudero\\SegundoTP\\Vista\\Vista.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\more\\.nuget\\packages\\microsoft.codecoverage\\17.4.0\\microsoft.codecoverage.17.4.0.nupkg.sha512",
     "C:\\Users\\more\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\more\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\more\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",

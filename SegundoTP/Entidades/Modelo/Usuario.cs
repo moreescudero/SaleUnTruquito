@@ -24,6 +24,8 @@ namespace Entidades.Modelo
         int manosGanadas;
         int partidasGanadas;
         int partidasPerdidas;
+        int cantSacoFaltaEnvido;
+        int cantAnchosDeEspada;
         bool estaJugando = false;
 
         public Usuario(int id, string? nombreUsuario, string? contraseña)
@@ -34,10 +36,13 @@ namespace Entidades.Modelo
             cartas = new List<Carta>();
             cartasJugadas = new List<Carta>();
         }
-        public Usuario(int id, string? nombreUsuario, string? contraseña, int partidasGanadas, int partidasPerdidas) : this(id, nombreUsuario, contraseña)
+
+        public Usuario(int id, string? nombreUsuario, string? contraseña, int partidasGanadas, int partidasPerdidas, int cantAnchosDeEspada, int cantSacoFaltaEnvido) : this(id, nombreUsuario, contraseña)
         {
             this.partidasPerdidas = partidasPerdidas;
             this.partidasGanadas = partidasGanadas;
+            this.cantSacoFaltaEnvido = cantSacoFaltaEnvido;
+            this.cantAnchosDeEspada = cantAnchosDeEspada;
         }
 
         public string? NombreUsuario { get { return nombreUsuario; } } 
@@ -56,6 +61,8 @@ namespace Entidades.Modelo
         public int PartidasGanadas { get { return partidasGanadas; } set { partidasGanadas = value; } } 
         public int PartidasPerdidas { get { return partidasPerdidas; } set { partidasPerdidas = value; } }
         public bool EstaJugando { get { return estaJugando; } set { estaJugando = value; } }
+        public int CantSacoFaltaEnvido { get { return cantSacoFaltaEnvido; } set { cantSacoFaltaEnvido = value; } }
+        public int CantAnchosDeEspada { get { return cantAnchosDeEspada; } set { cantAnchosDeEspada = value; } }
          
         /// <summary>
         /// comprueva si la contraseña ingresada es igual a la contraseña del usuario

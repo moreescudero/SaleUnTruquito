@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "4+awM1Te2XIAKKHjH3OJhCESU4IgCRFHQ+lTzhq2IchXrv24XmB1Dv3u4OE5pTJ62c/NHG0yYEt4CBrl5SsqEA==",
+  "dgSpecHash": "h18duoRoC5fFU2bwqoQgPhugt9IEGdu4H/FvSUiYL3L4XlA2GlYFtFbd0SRjUNJIcIpE6Bz/Z8FR3RBY8vLyvw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\more\\Desktop\\Morena.Escudero.Parcial\\SegundoTP\\Entidades_Deberia\\Entidades_Deberia.csproj",
+  "projectFilePath": "C:\\Users\\more\\Desktop\\TP2.Morena.Escudero\\SegundoTP\\Entidades_Deberia\\Entidades_Deberia.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\more\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
-    "C:\\Users\\more\\.nuget\\packages\\microsoft.codecoverage\\17.1.0\\microsoft.codecoverage.17.1.0.nupkg.sha512",
+    "C:\\Users\\more\\.nuget\\packages\\microsoft.codecoverage\\17.4.0\\microsoft.codecoverage.17.4.0.nupkg.sha512",
     "C:\\Users\\more\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
     "C:\\Users\\more\\.nuget\\packages\\microsoft.net.test.sdk\\17.1.0\\microsoft.net.test.sdk.17.1.0.nupkg.sha512",
     "C:\\Users\\more\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",

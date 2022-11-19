@@ -46,8 +46,10 @@ namespace Entidades.Modelo
                     string contraseña = dataReader.GetString(2);
                     int partidasGanadas = dataReader.GetInt32(3);
                     int partidasPerdidas = dataReader.GetInt32(4);
+                    int cantAnchosDeEspada = dataReader.GetInt32(5);
+                    int cantSacoFaltaEnvido = dataReader.GetInt32(6);
 
-                    Usuario usuario = new Usuario(id, nombreUsuario, contraseña, partidasGanadas, partidasPerdidas);
+                    Usuario usuario = new Usuario(id, nombreUsuario, contraseña, partidasGanadas, partidasPerdidas, cantAnchosDeEspada, cantSacoFaltaEnvido);
                     usuarios.Add(usuario);
                 }
 

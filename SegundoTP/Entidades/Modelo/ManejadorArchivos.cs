@@ -8,12 +8,12 @@ namespace Entidades.Modelo
 {
     public static class ManejadorArchivos
     {
-        static string? ruta;
+        //static string? ruta;
 
-        static ManejadorArchivos()
-        {
+        //static ManejadorArchivos()
+        //{
 
-        }
+        //}
 
         /// <summary>
         /// escribe un archivo

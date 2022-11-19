@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\more\\Desktop\\Morena.Escudero.Parcial\\SegundoTP\\Vista\\Vista.csproj": {}
+    "C:\\Users\\more\\Desktop\\TP2.Morena.Escudero\\SegundoTP\\Vista\\Vista.csproj": {}
   },
   "projects": {
-    "C:\\Users\\more\\Desktop\\Morena.Escudero.Parcial\\SegundoTP\\Entidades\\Entidades.csproj": {
+    "C:\\Users\\more\\Desktop\\TP2.Morena.Escudero\\SegundoTP\\Entidades\\Entidades.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\more\\Desktop\\Morena.Escudero.Parcial\\SegundoTP\\Entidades\\Entidades.csproj",
+        "projectUniqueName": "C:\\Users\\more\\Desktop\\TP2.Morena.Escudero\\SegundoTP\\Entidades\\Entidades.csproj",
         "projectName": "Entidades",
-        "projectPath": "C:\\Users\\more\\Desktop\\Morena.Escudero.Parcial\\SegundoTP\\Entidades\\Entidades.csproj",
+        "projectPath": "C:\\Users\\more\\Desktop\\TP2.Morena.Escudero\\SegundoTP\\Entidades\\Entidades.csproj",
         "packagesPath": "C:\\Users\\more\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\more\\Desktop\\Morena.Escudero.Parcial\\SegundoTP\\Entidades\\obj\\",
+        "outputPath": "C:\\Users\\more\\Desktop\\TP2.Morena.Escudero\\SegundoTP\\Entidades\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\more\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.CodeCoverage": {
+              "target": "Package",
+              "version": "[17.4.0, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.4, )"
@@ -65,14 +69,14 @@
         }
       }
     },
-    "C:\\Users\\more\\Desktop\\Morena.Escudero.Parcial\\SegundoTP\\Vista\\Vista.csproj": {
+    "C:\\Users\\more\\Desktop\\TP2.Morena.Escudero\\SegundoTP\\Vista\\Vista.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\more\\Desktop\\Morena.Escudero.Parcial\\SegundoTP\\Vista\\Vista.csproj",
+        "projectUniqueName": "C:\\Users\\more\\Desktop\\TP2.Morena.Escudero\\SegundoTP\\Vista\\Vista.csproj",
         "projectName": "Vista",
-        "projectPath": "C:\\Users\\more\\Desktop\\Morena.Escudero.Parcial\\SegundoTP\\Vista\\Vista.csproj",
+        "projectPath": "C:\\Users\\more\\Desktop\\TP2.Morena.Escudero\\SegundoTP\\Vista\\Vista.csproj",
         "packagesPath": "C:\\Users\\more\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\more\\Desktop\\Morena.Escudero.Parcial\\SegundoTP\\Vista\\obj\\",
+        "outputPath": "C:\\Users\\more\\Desktop\\TP2.Morena.Escudero\\SegundoTP\\Vista\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\more\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -89,8 +93,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Users\\more\\Desktop\\Morena.Escudero.Parcial\\SegundoTP\\Entidades\\Entidades.csproj": {
-                "projectPath": "C:\\Users\\more\\Desktop\\Morena.Escudero.Parcial\\SegundoTP\\Entidades\\Entidades.csproj"
+              "C:\\Users\\more\\Desktop\\TP2.Morena.Escudero\\SegundoTP\\Entidades\\Entidades.csproj": {
+                "projectPath": "C:\\Users\\more\\Desktop\\TP2.Morena.Escudero\\SegundoTP\\Entidades\\Entidades.csproj"
               }
             }
           }
