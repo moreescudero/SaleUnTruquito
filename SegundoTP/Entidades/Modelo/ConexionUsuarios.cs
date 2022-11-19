@@ -77,13 +77,15 @@ namespace Entidades.Modelo
             {
                 connection.Open();
 
-                Comando("insert into Usuarios (Usuario, Contraseña, PartidasGanadas, PartidasPerdidas) values(@Usuario, @Contraseña, @PartidasGanadas, @PartidasPerdidas)");
+                Comando("insert into Usuarios (Usuario, Contraseña, PartidasGanadas, PartidasPerdidas, AnchoEspadaObtenidos, CantFaltaEnvidoJugados) values(@Usuario, @Contraseña, @PartidasGanadas, @PartidasPerdidas, @AnchoEspadaObtenidos, @CantFaltaEnvidoJugados)");
 
                 command.Parameters.Clear();
                 command.Parameters.AddWithValue("@Usuario", usuario.NombreUsuario);
                 command.Parameters.AddWithValue("@Contraseña", contraseña);
                 command.Parameters.AddWithValue("@PartidasGanadas", usuario.PartidasGanadas);
                 command.Parameters.AddWithValue("@PartidasPerdidas", usuario.PartidasPerdidas);
+                command.Parameters.AddWithValue("@AnchoEspadaObtenidos", usuario.CantAnchosDeEspada);
+                command.Parameters.AddWithValue("@CantFaltaEnvidoJugados", usuario.CantoFaltaEnvido);
 
                 command.ExecuteNonQuery();
 
@@ -112,11 +114,13 @@ namespace Entidades.Modelo
 
                 foreach (Usuario usuario in usuarios)
                 {
-                    Comando("update Usuarios set PartidasGanadas = @PartidasGanadas, PartidasPerdidas = @PartidasPerdidas where Id = @Id");
+                    Comando("update Usuarios set PartidasGanadas = @PartidasGanadas, PartidasPerdidas = @PartidasPerdidas, AnchoEspadaObtenidos = @AnchoEspadaObtenidos, CantFaltaEnvidoJugados = @CantFaltaEnvidoJugados where Id = @Id");
 
                     command.Parameters.Clear();
                     command.Parameters.AddWithValue("@PartidasGanadas", usuario.PartidasGanadas);
                     command.Parameters.AddWithValue("@PartidasPerdidas", usuario.PartidasPerdidas);
+                    command.Parameters.AddWithValue("@AnchoEspadaObtenidos", usuario.CantAnchosDeEspada);
+                    command.Parameters.AddWithValue("@CantFaltaEnvidoJugados", usuario.CantoFaltaEnvido);
                     command.Parameters.AddWithValue("@Id", usuario.Id);
 
                     command.ExecuteNonQuery();

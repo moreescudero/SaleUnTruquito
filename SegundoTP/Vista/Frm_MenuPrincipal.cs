@@ -36,6 +36,7 @@ namespace Vista
         {
             presentador.MostrarJugadorActivo();
             presentador.CargarDataGridUsuarios();
+            presentador.CargarDataGridPartidas();
             tmr_Partidas.Start();
             try
             {
@@ -52,7 +53,7 @@ namespace Vista
         {
             listaTareas.Add(new Task(() =>
             {
-                Frm_Sala frm_sala = new Frm_Sala(presentador.DevolverPartidaElegida(indice));
+                Frm_Sala frm_sala = new Frm_Sala(false, presentador.DevolverPartidaElegida(indice));
                 frm_sala.ShowDialog();
             }
             ));
@@ -124,6 +125,8 @@ namespace Vista
         private void btn_CrearSala_Click(object sender, EventArgs e)
         {
             //jugar contra la máquina 
+            Frm_Sala frm_sala = new Frm_Sala(true, presentador.DevolverPartidaElegida(indice));
+            frm_sala.ShowDialog();
         }
 
         private void dgv_Salas_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)

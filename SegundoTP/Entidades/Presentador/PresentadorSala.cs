@@ -16,6 +16,7 @@ namespace Entidades.Presentador
         public Action delTerminarPartida;
         string chatJug1 = String.Empty;
         string chatJug2 = String.Empty;
+        string ganadorAux = String.Empty;
         bool gano;
         bool contesto;
         int puntos;
@@ -28,10 +29,11 @@ namespace Entidades.Presentador
         bool seCantoQuieroVale4 = false;
         bool decirEnvido = false;
         bool seContestoTruco = false;
-        bool terminoVuelta = false;
+        bool juegoActivo;
 
-        public PresentadorSala (ISala sala, Object partida)
+        public PresentadorSala (ISala sala, Object partida, bool juegoActivo)
         {
+            this.juegoActivo = juegoActivo;
             this.sala = sala;
             this.partida = partida as Partida;
             if(this.partida is not null)
@@ -46,6 +48,7 @@ namespace Entidades.Presentador
             jugadores[0].EsMano = true;
             delTerminarVuelta = sala.LimpiarVuelta;
             delTerminarVuelta += LimpiarVuelta;
+            delTerminarVuelta += sala.LimpiarMesa;
             delTerminarVuelta += this.partida.FinalizarVuelta;
             delTerminarVuelta += this.partida.ActivarEventoMazo;
             delTerminarPartida = sala.FrenarTimer;
@@ -54,25 +57,6 @@ namespace Entidades.Presentador
             sala.UsuarioJugador1 = jugadores[0].NombreUsuario;
             sala.UsuarioJugador2 = jugadores[1].NombreUsuario;
         }
-
-        ///// <summary>
-        ///// asigna 2 jugadores random disponibles a excepción del usuario activo y quienes se encuentren en otro partida
-        ///// </summary>
-        //private void AsignarJugadoresRandom()
-        //{
-        //    Random rnd = new Random();
-        //    do
-        //    {
-        //        int indice = rnd.Next(0, PresentadorMenuPrincipal.usuarios.Count());
-        //        Usuario usuario = PresentadorMenuPrincipal.usuarios[indice];
-        //        if (!jugadores.Contains(usuario) && usuario != PresentadorMenuPrincipal.usuarioActivo && !usuario.EstaJugando)
-        //        {
-        //            jugadores.Add(PresentadorMenuPrincipal.usuarios[indice]);
-        //        }
-        //    } while (jugadores.Count < 2);
-        //    sala.UsuarioJugador1 = jugadores[0].NombreUsuario;
-        //    sala.UsuarioJugador2 = jugadores[1].NombreUsuario;
-        //}
 
         /// <summary>
         /// los jugadores cantan envido si es que pueden hacerlo, si es así se responden si quieren o no
@@ -210,9 +194,10 @@ namespace Entidades.Presentador
             sala.Chat += jugadores[0].NombreUsuario + ": " + envidoJug1.ToString() + "\n";
             envidoJug2 = partida.DecirEnvido(jugadores[1]);
             sala.Chat += jugadores[1].NombreUsuario + ": " + envidoJug2.ToString() + "\n";
-            sala.Ganador = partida.DeterminarGanadorEnvido(envidoJug1, envidoJug2);
+            ganadorAux = partida.DeterminarGanadorEnvido(envidoJug1, envidoJug2);
+            sala.Chat += ganadorAux + "\n";
 
-            if (sala.Ganador == "Jugador 1 ganó envido")
+            if (ganadorAux == jugadores[0].NombreUsuario + " ganó envido" || ganadorAux == jugadores[0].NombreUsuario + " ganó falta envido")
             {
                 jugadores[0].CantoEnvido = true;
                 puntos = jugadores[0].PuntosPartida;
@@ -280,7 +265,8 @@ namespace Entidades.Presentador
                                 }
                             }
                             Carta cartaJugada = partida.Jugar(jugadores[0], jugadores[1].CartaJugada);
-                            sala.CartasJug1 += cartaJugada.Numero + " " + cartaJugada.Palo + "  ";
+                            sala.TirarCartaEnMesa(cartaJugada.Numero + " " + cartaJugada.Palo, 1);
+                            //sala.CartasJug1 += cartaJugada.Numero + " " + cartaJugada.Palo + "  ";
                         }
                         else if ((jugadores[1].EsMano && !jugadores[0].EsMano && primeraMano) || jugadores[1].Cartas.Count > 0 || jugadores[0].CantoTruco && !seContestoTruco)
                         {
@@ -293,7 +279,8 @@ namespace Entidades.Presentador
                                 }
                             }
                             Carta cartaJugada = partida.Jugar(jugadores[1], jugadores[0].CartaJugada);
-                            sala.CartasJug2 += cartaJugada.Numero + " " + cartaJugada.Palo + "  ";
+                            sala.TirarCartaEnMesa(cartaJugada.Numero + " " + cartaJugada.Palo, 2);
+                            //sala.CartasJug2 += cartaJugada.Numero + " " + cartaJugada.Palo + "  ";
                         }
                         primeraMano = false;
                     }
@@ -393,7 +380,7 @@ namespace Entidades.Presentador
             {
                 MostrarCartas();
             }
-            terminoVuelta = true;
+            //terminoVuelta = true;
             if (indice == 0)
             {
                 sala.PuntosJug1 = puntos.ToString();
@@ -408,17 +395,13 @@ namespace Entidades.Presentador
                 if (jugadores[indice].PuntosPartida > 14)
                 {
                     ganador = jugadores[indice].NombreUsuario;
-                    sala.Chat += ganador + " ganó la partida!";
-                    sala.Ganador = "Felicidades " + ganador + ", ganaste!";
-                    delTerminarPartida();
                 }
-                else /*if (jugadores[indiceOtroJug].PuntosPartida > 14)*/
+                else 
                 {
                     ganador = jugadores[indiceOtroJug].NombreUsuario;
-                    sala.Chat += ganador + " ganó la partida!";
-                    sala.Ganador = "Felicidades " + ganador + ", ganaste!";
-                    
+
                 }
+                sala.Chat += "Felicidades " + ganador + ", ganaste!";
                 delTerminarPartida();
                 sala.GuardarPartida(ganador);
             }
@@ -438,7 +421,7 @@ namespace Entidades.Presentador
                 chatJug2 = String.Empty;
                 string? mensaje = "Ganó " + jugadores[indice].NombreUsuario;
                 sala.Chat += mensaje;
-                sala.Ganador = mensaje;
+                //ganadorAux = mensaje;
                 sala.Chat += "\n\n";
                 gano = true;
             }
@@ -456,7 +439,8 @@ namespace Entidades.Presentador
                 {
                     if (!jugadores[0].CartasJugadas.Contains(x))
                     {
-                        sala.CartasJug1 += x.Numero + " " + x.Palo + " ";
+                        //sala.CartasJug1 += x.Numero + " " + x.Palo + " ";
+                        sala.TirarCartaEnMesa(x.Numero + " " + x.Palo, 1);
                     }
                 });
             }
@@ -466,11 +450,12 @@ namespace Entidades.Presentador
                 {
                     if (!jugadores[1].CartasJugadas.Contains(x))
                     {
-                        sala.CartasJug2 += x.Numero + " " + x.Palo + " ";
+                        //sala.CartasJug2 += x.Numero + " " + x.Palo + " ";
+                        sala.TirarCartaEnMesa(x.Numero + " " + x.Palo, 2);
                     }
                 });
             }
-            
+            sala.Chat += "Envido en mesa \n";
         }
 
         /// <summary>
@@ -499,7 +484,7 @@ namespace Entidades.Presentador
             seCantoQuieroVale4 = false;
             decirEnvido = false;
             seContestoTruco = false;
-            terminoVuelta = false;
+            //terminoVuelta = false;
         }
     }
 }

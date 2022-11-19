@@ -22,5 +22,7 @@ namespace Entidades.Presentador
         void LimpiarVuelta();
         void GuardarPartida(string? ganador);
         void CargarFondo();
+        void TirarCartaEnMesa(string? carta, int jug);
+        void LimpiarMesa();
     }
 }

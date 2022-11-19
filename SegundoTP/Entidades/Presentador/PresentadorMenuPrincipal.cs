@@ -53,8 +53,6 @@ namespace Entidades.Presentador
                 menu.HabilitarPanel = true;
                 menu.ErrorPanel = ex.Message;
             }
-            //en el dgv solo se van a mostrar las partidas activas asi que a penas se ingrese a este frm
-            //se deberian crear automaticamente entre 2 y 4 partidas para simular que ya exista gente jugando
         }
 
         /// <summary>
@@ -136,7 +134,6 @@ namespace Entidades.Presentador
             Partida partida = partidas[indice];
             partida.Id = (ObtenerUltimoID() + 1);
             partidas.Remove(partida);
-            partidasTotales.Add(partida);
 
             return partida;
         }
