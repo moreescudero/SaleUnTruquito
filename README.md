@@ -1,4 +1,4 @@
-# Título: Un Truquito
+# Título: Sale Un Truquito
 
 ## Resumen
 
