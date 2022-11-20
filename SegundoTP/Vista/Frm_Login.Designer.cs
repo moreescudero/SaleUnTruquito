@@ -33,7 +33,6 @@
             this.txt_Usuario = new System.Windows.Forms.TextBox();
             this.btn_Salir = new System.Windows.Forms.Button();
             this.btn_Aceptar = new System.Windows.Forms.Button();
-            this.btn_Autocompletar = new System.Windows.Forms.Button();
             this.lbl_UsuarioIncorrecto = new System.Windows.Forms.Label();
             this.lbl_ContraseñaIncorrecta = new System.Windows.Forms.Label();
             this.lbl_CrearUsuario = new System.Windows.Forms.Label();
@@ -78,15 +77,6 @@
             this.btn_Aceptar.Text = "Aceptar";
             this.btn_Aceptar.UseVisualStyleBackColor = true;
             this.btn_Aceptar.Click += new System.EventHandler(this.btn_Aceptar_Click);
-            // 
-            // btn_Autocompletar
-            // 
-            this.btn_Autocompletar.Location = new System.Drawing.Point(157, 218);
-            this.btn_Autocompletar.Name = "btn_Autocompletar";
-            this.btn_Autocompletar.Size = new System.Drawing.Size(100, 23);
-            this.btn_Autocompletar.TabIndex = 4;
-            this.btn_Autocompletar.Text = "Autocompletar";
-            this.btn_Autocompletar.UseVisualStyleBackColor = true;
             // 
             // lbl_UsuarioIncorrecto
             // 
@@ -141,7 +131,6 @@
             this.Controls.Add(this.lbl_CrearUsuario);
             this.Controls.Add(this.lbl_ContraseñaIncorrecta);
             this.Controls.Add(this.lbl_UsuarioIncorrecto);
-            this.Controls.Add(this.btn_Autocompletar);
             this.Controls.Add(this.btn_Aceptar);
             this.Controls.Add(this.btn_Salir);
             this.Controls.Add(this.txt_Usuario);
@@ -162,7 +151,6 @@
         private TextBox txt_Usuario;
         private Button btn_Salir;
         private Button btn_Aceptar;
-        private Button btn_Autocompletar;
         private Label lbl_UsuarioIncorrecto;
         private Label lbl_ContraseñaIncorrecta;
         private Label lbl_CrearUsuario;
