@@ -50,6 +50,7 @@
             this.btn_Reglas = new System.Windows.Forms.Button();
             this.pnl_Reglas = new System.Windows.Forms.Panel();
             this.rtx_Reglas = new System.Windows.Forms.RichTextBox();
+            this.lbl_Titulo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_JugadoresDisponibles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Salas)).BeginInit();
@@ -138,7 +139,7 @@
             this.lbl_BienvenidoJugador.AutoSize = true;
             this.lbl_BienvenidoJugador.BackColor = System.Drawing.Color.Transparent;
             this.lbl_BienvenidoJugador.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_BienvenidoJugador.Location = new System.Drawing.Point(24, 30);
+            this.lbl_BienvenidoJugador.Location = new System.Drawing.Point(21, 70);
             this.lbl_BienvenidoJugador.Name = "lbl_BienvenidoJugador";
             this.lbl_BienvenidoJugador.Size = new System.Drawing.Size(91, 20);
             this.lbl_BienvenidoJugador.TabIndex = 4;
@@ -228,9 +229,9 @@
             // pnl_Reglas
             // 
             this.pnl_Reglas.Controls.Add(this.rtx_Reglas);
-            this.pnl_Reglas.Location = new System.Drawing.Point(62, 53);
+            this.pnl_Reglas.Location = new System.Drawing.Point(62, 70);
             this.pnl_Reglas.Name = "pnl_Reglas";
-            this.pnl_Reglas.Size = new System.Drawing.Size(667, 315);
+            this.pnl_Reglas.Size = new System.Drawing.Size(667, 317);
             this.pnl_Reglas.TabIndex = 9;
             this.pnl_Reglas.Visible = false;
             // 
@@ -243,12 +244,23 @@
             this.rtx_Reglas.TabIndex = 0;
             this.rtx_Reglas.Text = "";
             // 
+            // lbl_Titulo
+            // 
+            this.lbl_Titulo.AutoSize = true;
+            this.lbl_Titulo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_Titulo.Location = new System.Drawing.Point(21, 19);
+            this.lbl_Titulo.Name = "lbl_Titulo";
+            this.lbl_Titulo.Size = new System.Drawing.Size(162, 25);
+            this.lbl_Titulo.TabIndex = 10;
+            this.lbl_Titulo.Text = "Sale un truquito ";
+            // 
             // Frm_MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbl_Titulo);
             this.Controls.Add(this.pnl_Reglas);
             this.Controls.Add(this.btn_Reglas);
             this.Controls.Add(this.pnl_ErrorPartidas);
@@ -298,5 +310,6 @@
         private Button btn_Reglas;
         private Panel pnl_Reglas;
         private RichTextBox rtx_Reglas;
+        private Label lbl_Titulo;
     }
 }
