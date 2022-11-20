@@ -48,8 +48,8 @@ namespace Entidades.Modelo
                 {
                     int id = dataReader.GetInt32(0);
                     string ganador = dataReader.GetString(1);
-                    DateTime fecha = dataReader.GetDateTime(2);
-                    string perdedor = dataReader.GetString(3);
+                    string perdedor = dataReader.GetString(2);
+                    DateTime fecha = dataReader.GetDateTime(3);
 
                     Partida partida = new Partida(id, ganador, fecha, perdedor);
                     partidas.Add(partida);
@@ -100,7 +100,7 @@ namespace Entidades.Modelo
             }
             catch (Exception)
             {
-                throw new Exception("ocurrio un error en la obtención de partidas");
+                throw new Exception("ocurrio un error en la obtención de las partidas de " + ganadorPartida);
             }
         }
 

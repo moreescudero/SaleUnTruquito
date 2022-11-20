@@ -97,7 +97,7 @@ namespace Entidades.Presentador
             }
             else if (((jugadores[0].CantoFaltaEnvido && !jugadores[1].CantoFaltaEnvido) || (jugadores[0].CantoEnvido && !jugadores[1].CantoEnvido)) && chatJug2 == String.Empty)
             {
-                if (partida.CantarEnvido(jugadores[1]) && (jugadores[0].CantoEnvido || (jugadores[0].CantoFaltaEnvido && partida.DecirEnvido(jugadores[1]) >= 28)))
+                if (partida.CantarEnvido(jugadores[1]) && (jugadores[0].CantoEnvido || (jugadores[0].CantoFaltaEnvido && jugadores[1].DecirEnvido() >= 28)))
                 {
                     sala.Chat += jugadores[1].NombreUsuario + ": Quiero \n";
                     chatJug2 = "Quiero";
@@ -113,7 +113,7 @@ namespace Entidades.Presentador
             }
             else if (((jugadores[1].CantoFaltaEnvido && !jugadores[0].CantoFaltaEnvido) || (!jugadores[0].CantoEnvido && jugadores[1].CantoEnvido)) && chatJug1 == String.Empty)
             {
-                if (partida.CantarEnvido(jugadores[0]) && (jugadores[1].CantoEnvido || (jugadores[1].CantoFaltaEnvido && partida.DecirEnvido(jugadores[0]) >= 28)))
+                if (partida.CantarEnvido(jugadores[0]) && (jugadores[1].CantoEnvido || (jugadores[1].CantoFaltaEnvido && jugadores[0].DecirEnvido() >= 28)))
                 {
                     sala.Chat += jugadores[0].NombreUsuario + ": Quiero \n";
                     chatJug1 = "Quiero";
@@ -158,7 +158,7 @@ namespace Entidades.Presentador
             {
                 if (partida.CantarEnvido(jugadores[indice]))
                 {
-                    if (partida.DecirEnvido(jugadores[indice]) >= 28)
+                    if (jugadores[indice].DecirEnvido() >= 28)
                     {
                         jugadores[indice].CantoFaltaEnvido = true;
                         jugadores[indice].CantSacoFaltaEnvido++;
@@ -170,7 +170,7 @@ namespace Entidades.Presentador
                 }
                 else if (partida.CantarEnvido(jugadores[indiceOtroJug]))
                 {
-                    if (partida.DecirEnvido(jugadores[indiceOtroJug]) >= 28)
+                    if (jugadores[indiceOtroJug].DecirEnvido() >= 28)
                     {
                         jugadores[indiceOtroJug].CantoFaltaEnvido = true;
                         jugadores[indiceOtroJug].CantSacoFaltaEnvido++;
@@ -201,9 +201,9 @@ namespace Entidades.Presentador
         /// </summary>
         private void DecirCantEnvido()
         {
-            envidoJug1 = partida.DecirEnvido(jugadores[0]);
+            envidoJug1 = jugadores[0].DecirEnvido();
             sala.Chat += jugadores[0].NombreUsuario + ": " + envidoJug1.ToString() + "\n";
-            envidoJug2 = partida.DecirEnvido(jugadores[1]);
+            envidoJug2 = jugadores[1].DecirEnvido();
             sala.Chat += jugadores[1].NombreUsuario + ": " + envidoJug2.ToString() + "\n";
             ganadorAux = partida.DeterminarGanadorEnvido(envidoJug1, envidoJug2);
             sala.Chat += ganadorAux + "\n";
@@ -342,7 +342,7 @@ namespace Entidades.Presentador
             seContestoTruco = true;
             if (jugadores[0].CantoTruco && !jugadores[1].CantoTruco)
             {
-                chatJug2 = partida.ContestarTruco(jugadores[1]);
+                chatJug2 = jugadores[1].ContestarTruco();
                 sala.Chat += jugadores[1].NombreUsuario + ": " + chatJug2  + "\n";
                 if (chatJug2 == "No quiero" && chatJug1 == "Truco")
                 {
@@ -352,7 +352,7 @@ namespace Entidades.Presentador
             }
             else if(jugadores[1].CantoTruco && !jugadores[0].CantoTruco)
             {
-                chatJug1 = partida.ContestarTruco(jugadores[0]);
+                chatJug1 = jugadores[0].ContestarTruco();
                 sala.Chat += jugadores[0].NombreUsuario + ": " + chatJug1 + "\n";
                 if (chatJug1 == "No quiero" && chatJug2 == "Truco")
                 {

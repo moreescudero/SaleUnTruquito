@@ -270,12 +270,6 @@ namespace Entidades_Deberia
             Assert.IsTrue(quiereEnvido);
         }
 
-        [TestMethod]
-        public void DecirEnvido_Deberia()
-        {
-
-        }
-
         //[TestMethod]
         //public void Jugar_DeberiaJug2Ganar
 
@@ -337,6 +331,7 @@ namespace Entidades_Deberia
             Assert.IsTrue(2 == partida.Jugadores[1].PuntosPartida && partida.Jugadores[0].PuntosPartida == 0 || 2 == partida.Jugadores[0].PuntosPartida && partida.Jugadores[1].PuntosPartida == 0);
         }
 
+
         [TestMethod]
         public void AsignarTurno_DeberiaDarleElTurnoAlJug2() 
         {
@@ -386,19 +381,47 @@ namespace Entidades_Deberia
             Assert.IsNotNull(partida.Jugadores[1].CartaJugada);
         }
 
+        [TestMethod]
+        public void FinalizarVuelta_Deberia()
+        {
+            Partida partida = DevolverPartidaPrueba();
+            partida.Jugadores[0].CartasJugadas.Add(new Carta(3, "oro", EValores.Tres));
+            partida.Jugadores[1].CartasJugadas.Add(new Carta(5, "copa", EValores.Cinco));
+            partida.Jugadores[0].Cartas.Add(new Carta(10, "espada", EValores.Diez));
+            partida.Jugadores[1].Cartas.Add(new Carta(7, "espada", EValores.SieteEspada));
+            partida.Jugadores[0].CartaJugada = new Carta(1, "basto", EValores.AnchoBasto);
+            partida.Jugadores[1].CartaJugada = new Carta(1, "espada", EValores.AnchoEspada);
+            partida.Jugadores[0].SacoFlor = true;
+            partida.Jugadores[1].CantoTruco = true;
+            partida.Jugadores[0].CantoTruco = true;
+            partida.Jugadores[0].ManosGanadas = 2;
+            partida.Jugadores[1].ManosGanadas = 1;
 
-        //[DataRow (15,13)]
-        //[DataRow (14,16)]
-        //[TestMethod]
-        //public void AsignarPuntos_Deberia(int jug1, int jug2)
-        //{
-        //    List<Usuario> jugadores = CrearPartidaPrueba();
-        //    Partida partida = new Partida(0, jugadores, DateTime.Now);
-        //    jugadores[0].PuntosPartida = jug1;
-        //    jugadores[1].PuntosPartida = jug2;
+            partida.FinalizarVuelta();
 
-        //    partida.AsignarPuntos();
+            Assert.IsNull(partida.Jugadores[0].CartaJugada);
+            Assert.IsNull(partida.Jugadores[1].CartaJugada);
+            Assert.IsTrue(partida.Jugadores[0].CartasJugadas.Count == 0 && partida.Jugadores[1].CartasJugadas.Count == 0);
+            Assert.IsTrue(partida.Jugadores[0].Cartas.Count == 0 && partida.Jugadores[1].Cartas.Count == 0);
+            Assert.IsFalse(partida.Jugadores[0].SacoFlor && partida.Jugadores[1].CantoTruco && partida.Jugadores[0].CantoTruco);
+            Assert.IsTrue(partida.Jugadores[0].ManosGanadas == 0 && partida.Jugadores[1].ManosGanadas == 0);
+        }
 
-        //}
+        [TestMethod]
+        public void FinalizarPartidas_Deberia()
+        {
+            Partida partida = DevolverPartidaPrueba();
+            partida.Jugadores[0].PuntosPartida = 15;
+            partida.Jugadores[1].PuntosPartida = 12;
+            partida.Jugadores[0].EstaJugando = true;
+            partida.Jugadores[1].EstaJugando = true;
+            partida.Jugadores[0].EsMano = true;
+
+            partida.FinalizarPartida();
+
+            Assert.IsFalse(partida.Jugadores[0].EstaJugando && partida.Jugadores[1].EstaJugando);
+            Assert.IsFalse(partida.Jugadores[0].EsMano && partida.Jugadores[1].EsMano);
+            Assert.IsTrue(partida.Jugadores[0].PuntosPartida == 0 && partida.Jugadores[1].PuntosPartida == 0);
+        }
     }
 }

@@ -304,56 +304,6 @@ namespace Entidades.Modelo
             return false;
         }
 
-
-        ///// <summary>
-        ///// devuelve la cantidad de envido que tiene un jugador, teniendo en cuenta si había alguna 
-        ///// carta de número superior a 9 o si ambas eran ese tipo de cartas. 
-        ///// </summary>
-        ///// <param name="jugador"></param>
-        ///// <returns></returns>
-        //public int DecirEnvido(Usuario jugador)
-        //{
-        //    int envido = 0;
-        //    for (int i = 0; i < jugador.Cartas.Count; i++)
-        //    {
-        //        for (int j = i + 1; j < jugador.Cartas.Count; j++)
-        //        {
-        //            if (jugador.Cartas[i].Palo == jugador.Cartas[j].Palo)
-        //            {
-        //                int numeroUno = jugador.Cartas[i].Numero;
-        //                int numeroDos = jugador.Cartas[j].Numero;
-        //                if (numeroUno >= 10)
-        //                {
-        //                    numeroUno = 20;
-        //                }
-        //                if (numeroDos >= 10)
-        //                {
-        //                    numeroDos = 20;
-        //                }
-        //                if (numeroUno == 20 || numeroDos == 20)
-        //                {
-        //                    if (numeroUno == 20 && numeroDos == 20)
-        //                    {
-        //                        envido = 20;
-        //                    }
-        //                    else
-        //                    {
-        //                        envido = numeroUno + numeroDos;
-        //                    }
-        //                }
-        //                else
-        //                {
-        //                    envido = numeroUno + numeroDos + 20;
-        //                }
-
-        //                break;
-        //            }
-        //        }
-        //    }
-        //    return envido;
-        //}
-
-
         /// <summary>
         /// Determina el ganador del envido según quien haya ganado en numero o, si empataron, según quién 
         /// es mano
@@ -393,41 +343,6 @@ namespace Entidades.Modelo
                 }
             }
             return retorno;
-        }
-
-        /// <summary>
-        /// determina si quiere o no quiere truco según si en el total de cartas que tiene el jugador
-        /// tiene por lo menos una carta mayor a un 2
-        /// </summary>
-        /// <param name="jugador"></param>
-        /// <returns></returns>
-        public string ContestarTruco(Usuario jugador)
-        {
-            string mensaje = "";
-            List<Carta> cartasTotales = new List<Carta>();
-            foreach (Carta item in jugador.Cartas)
-            {
-                cartasTotales.Add(item);
-            }
-            foreach (Carta item in jugador.CartasJugadas)
-            {
-                cartasTotales.Add(item);
-            }
-
-            foreach (Carta item in cartasTotales)
-            {
-                if ((int)item.Valor < 6)
-                {
-                    mensaje = "Quiero";
-                    jugador.CantoTruco = true;
-                    break;
-                }
-                else
-                {
-                    mensaje = "No quiero";
-                }
-            }
-            return mensaje;
         }
 
         /// <summary>

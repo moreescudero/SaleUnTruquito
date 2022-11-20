@@ -19,8 +19,6 @@ namespace Entidades.Modelo
         bool cantoFaltaEnvido = false;
         bool cantoTruco = false;
         bool sacoFlor = false;
-        //bool cantoRetruco = false;
-        //bool cantoQuieroVale4 = false;
         int puntosPartida;
         int manosGanadas;
         int partidasGanadas;
@@ -53,8 +51,6 @@ namespace Entidades.Modelo
         public bool CantoFaltaEnvido { get { return cantoFaltaEnvido; } set { cantoFaltaEnvido = value; } } 
         public bool CantoTruco { get { return cantoTruco; } set { cantoTruco = value; } } 
         public bool SacoFlor { get { return sacoFlor; } set { sacoFlor = value; } }
-        //public bool CantoRetruco { get { return cantoRetruco; } set { cantoRetruco = value; } } 
-        //public bool CantoQuieroVale4 { get { return cantoQuieroVale4; } set { cantoQuieroVale4 = value; } } 
         public List<Carta> Cartas { get { return cartas; } set { cartas = value; } } 
         public List<Carta> CartasJugadas { get { return cartasJugadas; } set { cartasJugadas = value; } } 
         public Carta CartaJugada { get { return cartaJugada; } set { cartaJugada = value; } } 
@@ -144,6 +140,41 @@ namespace Entidades.Modelo
         }
 
         /// <summary>
+        /// determina si quiere o no quiere truco según si en el total de cartas que tiene el jugador
+        /// tiene por lo menos una carta mayor a un 2
+        /// </summary>
+        /// <param name="jugador"></param>
+        /// <returns></returns>
+        public string ContestarTruco(/*Usuario jugador*/)
+        {
+            string mensaje = "";
+            List<Carta> cartasTotales = new List<Carta>();
+            foreach (Carta item in cartas)
+            {
+                cartasTotales.Add(item);
+            }
+            foreach (Carta item in cartasJugadas)
+            {
+                cartasTotales.Add(item);
+            }
+
+            foreach (Carta item in cartasTotales)
+            {
+                if ((int)item.Valor < 6)
+                {
+                    mensaje = "Quiero";
+                    cantoTruco = true;
+                    break;
+                }
+                else
+                {
+                    mensaje = "No quiero";
+                }
+            }
+            return mensaje;
+        }
+
+        /// <summary>
         /// setea todos los atributos del usuario para que pueda jugar una nueva vuelta
         /// </summary>
         public void TerminarVuelta()
@@ -156,8 +187,6 @@ namespace Entidades.Modelo
             cantoFaltaEnvido = false;
             cantoTruco = false;
             sacoFlor = false;
-            //cantoRetruco = false;
-            //cantoQuieroVale4 = false;
         }
 
         /// <summary>
