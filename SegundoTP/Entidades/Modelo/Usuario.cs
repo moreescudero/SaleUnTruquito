@@ -145,7 +145,7 @@ namespace Entidades.Modelo
         /// </summary>
         /// <param name="jugador"></param>
         /// <returns></returns>
-        public string ContestarTruco(/*Usuario jugador*/)
+        public string ContestarTruco()
         {
             string mensaje = "";
             List<Carta> cartasTotales = new List<Carta>();

@@ -39,7 +39,6 @@
             this.btn_AbirSala = new System.Windows.Forms.Button();
             this.btn_Estadistica = new System.Windows.Forms.Button();
             this.lbl_BienvenidoJugador = new System.Windows.Forms.Label();
-            this.lbl_UsuariosCargados = new System.Windows.Forms.Label();
             this.dgv_Salas = new System.Windows.Forms.DataGridView();
             this.JugadorUno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.JugadorDos = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -137,21 +136,13 @@
             // lbl_BienvenidoJugador
             // 
             this.lbl_BienvenidoJugador.AutoSize = true;
+            this.lbl_BienvenidoJugador.BackColor = System.Drawing.Color.Transparent;
             this.lbl_BienvenidoJugador.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_BienvenidoJugador.Location = new System.Drawing.Point(24, 30);
             this.lbl_BienvenidoJugador.Name = "lbl_BienvenidoJugador";
             this.lbl_BienvenidoJugador.Size = new System.Drawing.Size(91, 20);
             this.lbl_BienvenidoJugador.TabIndex = 4;
             this.lbl_BienvenidoJugador.Text = "Bienvenido ";
-            // 
-            // lbl_UsuariosCargados
-            // 
-            this.lbl_UsuariosCargados.AutoSize = true;
-            this.lbl_UsuariosCargados.Location = new System.Drawing.Point(307, 217);
-            this.lbl_UsuariosCargados.Name = "lbl_UsuariosCargados";
-            this.lbl_UsuariosCargados.Size = new System.Drawing.Size(38, 15);
-            this.lbl_UsuariosCargados.TabIndex = 5;
-            this.lbl_UsuariosCargados.Text = "asdad";
             // 
             // dgv_Salas
             // 
@@ -194,9 +185,9 @@
             // 
             this.pnl_ErrorPartidas.Controls.Add(this.btn_Volver);
             this.pnl_ErrorPartidas.Controls.Add(this.lbl_ErrorPartidasBaseDeDatos);
-            this.pnl_ErrorPartidas.Location = new System.Drawing.Point(296, 162);
+            this.pnl_ErrorPartidas.Location = new System.Drawing.Point(331, 202);
             this.pnl_ErrorPartidas.Name = "pnl_ErrorPartidas";
-            this.pnl_ErrorPartidas.Size = new System.Drawing.Size(255, 100);
+            this.pnl_ErrorPartidas.Size = new System.Drawing.Size(220, 72);
             this.pnl_ErrorPartidas.TabIndex = 7;
             this.pnl_ErrorPartidas.Visible = false;
             // 
@@ -237,9 +228,9 @@
             // pnl_Reglas
             // 
             this.pnl_Reglas.Controls.Add(this.rtx_Reglas);
-            this.pnl_Reglas.Location = new System.Drawing.Point(62, 48);
+            this.pnl_Reglas.Location = new System.Drawing.Point(62, 53);
             this.pnl_Reglas.Name = "pnl_Reglas";
-            this.pnl_Reglas.Size = new System.Drawing.Size(667, 309);
+            this.pnl_Reglas.Size = new System.Drawing.Size(667, 315);
             this.pnl_Reglas.TabIndex = 9;
             this.pnl_Reglas.Visible = false;
             // 
@@ -262,7 +253,6 @@
             this.Controls.Add(this.btn_Reglas);
             this.Controls.Add(this.pnl_ErrorPartidas);
             this.Controls.Add(this.dgv_Salas);
-            this.Controls.Add(this.lbl_UsuariosCargados);
             this.Controls.Add(this.lbl_BienvenidoJugador);
             this.Controls.Add(this.btn_Estadistica);
             this.Controls.Add(this.btn_AbirSala);
@@ -293,7 +283,6 @@
         private Button btn_Estadistica;
         private BindingSource usuarioBindingSource;
         private Label lbl_BienvenidoJugador;
-        private Label lbl_UsuariosCargados;
         private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nombreUsuarioDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn PartidasGanadas;

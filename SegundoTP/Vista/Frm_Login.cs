@@ -21,18 +21,6 @@ namespace Vista
         public string? ContraseñaIncorrecta { get { return lbl_ContraseñaIncorrecta.Text; } set { lbl_ContraseñaIncorrecta.Text = value; } }
 
 
-        private void Frm_Login_Load(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    List<Usuario> usuarios = Conexion.ObtenerUsuarios();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
-        }
-
         /// <summary>
         /// Vuelve a setear todo el formulario para hacer el log in
         /// </summary>
@@ -43,7 +31,6 @@ namespace Vista
             txt_Contraseña.Text = String.Empty;
             txt_Usuario.Text = String.Empty;
             btn_Salir.Text = "Salir";
-            btn_Autocompletar.Visible = true;
             chk_MostrarContraseña.Visible = false;
             lbl_CrearUsuario.Visible = true;
         }
@@ -106,7 +93,6 @@ namespace Vista
             creaUnUsuario = true;
             lbl_ContraseñaIncorrecta.Visible = false;
             btn_Salir.Text = "Cancelar";
-            btn_Autocompletar.Visible = false;
             chk_MostrarContraseña.Visible = true;
             lbl_CrearUsuario.Visible = false;
         }

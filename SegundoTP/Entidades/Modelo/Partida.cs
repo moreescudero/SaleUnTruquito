@@ -413,8 +413,6 @@ namespace Entidades.Modelo
         /// </summary>
         public void FinalizarPartida()
         {
-            //FinalizarVuelta();
-            //AsignarPuntos();
             jugadores.ForEach((x) => x.TerminarPartida());
         }
     }

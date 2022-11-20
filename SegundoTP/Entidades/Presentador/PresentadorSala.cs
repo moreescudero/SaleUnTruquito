@@ -499,8 +499,6 @@ namespace Entidades.Presentador
             envidoJug2 = 0;
             primeraMano = true;
             seCantoTruco = false;
-            //seCantoRetruco = false;
-            //seCantoQuieroVale4 = false;
             decirEnvido = false;
             seContestoTruco = false;
         }

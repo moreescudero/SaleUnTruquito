@@ -29,7 +29,6 @@ namespace Vista
         }
 
         public string? Bienvenido { get { return lbl_BienvenidoJugador.Text; } set { lbl_BienvenidoJugador.Text = value; } }    
-        public string? UsuariosCargados { get { return lbl_UsuariosCargados.Text; } set { lbl_UsuariosCargados.Text = value; } }
         public bool HabilitarBotonAbrirSala { get { return btn_AbirSala.Enabled; } set { btn_AbirSala.Enabled = value; } }
         public bool HabilitarPanel { set { pnl_ErrorPartidas.Enabled = value; } }
         public string? ErrorPanel { set { lbl_ErrorPartidasBaseDeDatos.Text = value; } }
@@ -56,7 +55,6 @@ namespace Vista
         {
             try
             {
-                //Object obj = ;
                 listaTareas.Add(new Task(() =>
                 {
                     try
@@ -118,10 +116,6 @@ namespace Vista
             this.Hide();
             frm_Estadistica.ShowDialog();
             this.Show();
-        }
-
-        private void btn_CrearSala_Click(object sender, EventArgs e)
-        {
         }
 
         private void dgv_Salas_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)

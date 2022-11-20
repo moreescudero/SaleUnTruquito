@@ -30,10 +30,6 @@ namespace Entidades.Modelo
         string? palo;
         EValores valor;
 
-        //public Carta ()
-        //{
-
-        //}
         public Carta(int numero, string? palo, EValores valor)
         {
             this.palo = palo;

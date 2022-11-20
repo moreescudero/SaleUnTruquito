@@ -13,7 +13,6 @@ namespace Entidades.Presentador
         List<Partida> partidas;
         List<Partida> partidasTotales;
         public static List<Usuario> usuarios;
-        //List<Usuario> jugadores;
         public static Usuario usuarioActivo;
 
         public PresentadorMenuPrincipal (IMenuPrincipal menu)
@@ -140,13 +139,6 @@ namespace Entidades.Presentador
                 return partida;
             }
             throw new Exception("La partida ya comenzó");
-            //}
-            //catch (Exception ex)
-            //{
-            //    menu.HabilitarPanel = true;
-            //    menu.ErrorPanel = String.Empty;
-            //    menu.ErrorPanel = ex.Message;
-            //}
         }
 
     }
