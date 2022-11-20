@@ -17,7 +17,7 @@ Una vez adentro del menu principal del juego el usuario podrá:
 
 ## Diagrama de clases
 
-
+![image](DiagramaDeClases.png)
 
 ## Justificación técnica
 
