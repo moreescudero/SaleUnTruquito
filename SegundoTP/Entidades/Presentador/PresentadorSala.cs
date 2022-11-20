@@ -25,15 +25,13 @@ namespace Entidades.Presentador
         int envidoJug2;
         bool primeraMano = true;
         bool seCantoTruco = false;
-        bool seCantoRetruco = false;
-        bool seCantoQuieroVale4 = false;
+        //bool seCantoRetruco = false;
+        //bool seCantoQuieroVale4 = false;
         bool decirEnvido = false;
         bool seContestoTruco = false;
-        bool juegoActivo;
 
-        public PresentadorSala (ISala sala, Object partida, bool juegoActivo)
+        public PresentadorSala (ISala sala, Object partida)
         {
-            this.juegoActivo = juegoActivo;
             this.sala = sala;
             this.partida = partida as Partida;
             if(this.partida is not null)
@@ -154,33 +152,46 @@ namespace Entidades.Presentador
         /// <param name="indiceOtroJug"></param>
         private void VerificarEnvido(int indice, int indiceOtroJug)
         {
-            if (partida.CantarEnvido(jugadores[indice]))
+            bool hayFlorJugIndice = jugadores[indice].BuscarFlor();
+            bool hayFlorJugOtroIndice = jugadores[indiceOtroJug].BuscarFlor();
+            if (!hayFlorJugIndice && !hayFlorJugOtroIndice)
             {
-                if (partida.DecirEnvido(jugadores[indice]) >= 28)
+                if (partida.CantarEnvido(jugadores[indice]))
                 {
-                    jugadores[indice].CantoFaltaEnvido = true;
-                    jugadores[indice].CantSacoFaltaEnvido++;
+                    if (partida.DecirEnvido(jugadores[indice]) >= 28)
+                    {
+                        jugadores[indice].CantoFaltaEnvido = true;
+                        jugadores[indice].CantSacoFaltaEnvido++;
+                    }
+                    else
+                    {
+                        jugadores[indice].CantoEnvido = true;
+                    }
+                }
+                else if (partida.CantarEnvido(jugadores[indiceOtroJug]))
+                {
+                    if (partida.DecirEnvido(jugadores[indiceOtroJug]) >= 28)
+                    {
+                        jugadores[indiceOtroJug].CantoFaltaEnvido = true;
+                        jugadores[indiceOtroJug].CantSacoFaltaEnvido++;
+                    }
+                    else
+                    {
+                        jugadores[indiceOtroJug].CantoEnvido = true;
+                    }
                 }
                 else
                 {
-                    jugadores[indice].CantoEnvido = true;
+                    sala.HayEnvido = false;
                 }
             }
-            else if (partida.CantarEnvido(jugadores[indiceOtroJug]))
+            else if (hayFlorJugIndice)
             {
-                if (partida.DecirEnvido(jugadores[indiceOtroJug]) >= 28)
-                {
-                    jugadores[indiceOtroJug].CantoFaltaEnvido = true;
-                    jugadores[indiceOtroJug].CantSacoFaltaEnvido++;
-                }
-                else
-                {
-                    jugadores[indiceOtroJug].CantoEnvido = true;
-                }
+                jugadores[indice].PuntosPartida += 3;
             }
-            else
+            else if (hayFlorJugOtroIndice)
             {
-                sala.HayEnvido = false;
+                jugadores[indiceOtroJug].PuntosPartida += 3;
             }
         }
 
@@ -266,7 +277,6 @@ namespace Entidades.Presentador
                             }
                             Carta cartaJugada = partida.Jugar(jugadores[0], jugadores[1].CartaJugada);
                             sala.TirarCartaEnMesa(cartaJugada.Numero + " " + cartaJugada.Palo, 1);
-                            //sala.CartasJug1 += cartaJugada.Numero + " " + cartaJugada.Palo + "  ";
                         }
                         else if ((jugadores[1].EsMano && !jugadores[0].EsMano && primeraMano) || jugadores[1].Cartas.Count > 0 || jugadores[0].CantoTruco && !seContestoTruco)
                         {
@@ -280,7 +290,6 @@ namespace Entidades.Presentador
                             }
                             Carta cartaJugada = partida.Jugar(jugadores[1], jugadores[0].CartaJugada);
                             sala.TirarCartaEnMesa(cartaJugada.Numero + " " + cartaJugada.Palo, 2);
-                            //sala.CartasJug2 += cartaJugada.Numero + " " + cartaJugada.Palo + "  ";
                         }
                         primeraMano = false;
                     }
@@ -380,7 +389,6 @@ namespace Entidades.Presentador
             {
                 MostrarCartas();
             }
-            //terminoVuelta = true;
             if (indice == 0)
             {
                 sala.PuntosJug1 = puntos.ToString();
@@ -403,6 +411,8 @@ namespace Entidades.Presentador
                 }
                 sala.Chat += "Felicidades " + ganador + ", ganaste!";
                 delTerminarPartida();
+                ConexionUsuarios conexion = new ConexionUsuarios();
+                conexion.ModificarUsuarios(jugadores);
                 sala.GuardarPartida(ganador);
             }
             else
@@ -421,7 +431,6 @@ namespace Entidades.Presentador
                 chatJug2 = String.Empty;
                 string? mensaje = "Ganó " + jugadores[indice].NombreUsuario;
                 sala.Chat += mensaje;
-                //ganadorAux = mensaje;
                 sala.Chat += "\n\n";
                 gano = true;
             }
@@ -439,7 +448,6 @@ namespace Entidades.Presentador
                 {
                     if (!jugadores[0].CartasJugadas.Contains(x))
                     {
-                        //sala.CartasJug1 += x.Numero + " " + x.Palo + " ";
                         sala.TirarCartaEnMesa(x.Numero + " " + x.Palo, 1);
                     }
                 });
@@ -450,7 +458,6 @@ namespace Entidades.Presentador
                 {
                     if (!jugadores[1].CartasJugadas.Contains(x))
                     {
-                        //sala.CartasJug2 += x.Numero + " " + x.Palo + " ";
                         sala.TirarCartaEnMesa(x.Numero + " " + x.Palo, 2);
                     }
                 });
@@ -470,7 +477,7 @@ namespace Entidades.Presentador
             }
             catch (Exception ex)
             {
-
+                sala.MostrarError(ex.Message);
             }
         }
 
@@ -480,11 +487,10 @@ namespace Entidades.Presentador
             envidoJug2 = 0;
             primeraMano = true;
             seCantoTruco = false;
-            seCantoRetruco = false;
-            seCantoQuieroVale4 = false;
+            //seCantoRetruco = false;
+            //seCantoQuieroVale4 = false;
             decirEnvido = false;
             seContestoTruco = false;
-            //terminoVuelta = false;
         }
     }
 }

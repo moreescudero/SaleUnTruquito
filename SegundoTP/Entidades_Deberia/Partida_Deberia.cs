@@ -62,30 +62,28 @@ namespace Entidades_Deberia
         [TestMethod]
         public void Barajar_Fallo()
         {
-            //Mazo mazo = Serializador<Mazo>.LeerJSon("mazo.json"); 
             List<Carta> listaMazo = null;
             Partida partida = new Partida(0);
 
             partida.Barajar(listaMazo);
 
-            //Assert.IsFalse(listaMazo.Count == 6);
-            //Assert.IsNull(listaMazo);
         }
 
         [ExpectedException(typeof(NullReferenceException))]
         [TestMethod]
         public void Repartir_Fallo()
         {
-            //Mazo mazo = Serializador<Mazo>.LeerJSon("mazo.json"); 
             List<Carta> listaMazo = null;
             Partida partida = DevolverPartidaPrueba();
 
-            //partida.Barajar(listaMazo);
             partida.Repartir(listaMazo);
-
-            //Assert.IsFalse(partida.Jugadores[0].Cartas.Count == 3 && partida.Jugadores[1].Cartas.Count == 3);
-            //Assert.IsNull(listaMazo);
         }
+
+        //[TestMethod]
+        //public void ActivarEventoFinalizarPartida_Deberia()
+        //{
+
+        //}
 
         [TestMethod]
         public void Jugar_DeberiaJug1TirarSuMejorCarta()
@@ -231,6 +229,8 @@ namespace Entidades_Deberia
             Assert.AreEqual(manosJug1, manosJug2);
         }
 
+
+
         [TestMethod]
         public void CantarEnvido_DeberiaCantarJug1()
         {
@@ -268,6 +268,12 @@ namespace Entidades_Deberia
             bool quiereEnvido = partida.CantarEnvido(partida.Jugadores[1]);
 
             Assert.IsTrue(quiereEnvido);
+        }
+
+        [TestMethod]
+        public void DecirEnvido_Deberia()
+        {
+
         }
 
         //[TestMethod]

@@ -85,8 +85,8 @@ namespace Entidades.Modelo
                 {
                     int id = dataReader.GetInt32(0);
                     string ganador = dataReader.GetString(1);
-                    DateTime fecha = dataReader.GetDateTime(2);
-                    string perdedor = dataReader.GetString(3);
+                    string perdedor = dataReader.GetString(2);
+                    DateTime fecha = dataReader.GetDateTime(3);
 
                     Partida partida = new Partida(id, ganador, fecha, perdedor);
                     partidas.Add(partida);
@@ -115,12 +115,12 @@ namespace Entidades.Modelo
             {
                 connection.Open();
 
-                Comando("insert into Partidas (Ganador, Fecha, Perdedor) values(@Ganador, @Fecha, @Perdedor)");
+                Comando("insert into Partidas (Ganador, Perdedor, Fecha) values(@Ganador, @Perdedor, @Fecha)");
 
                 command.Parameters.Clear();
                 command.Parameters.AddWithValue("@Ganador", partida.Ganador);
-                command.Parameters.AddWithValue("@Fecha", partida.Fecha);
                 command.Parameters.AddWithValue("@Perdedor", partida.Perdedor);
+                command.Parameters.AddWithValue("@Fecha", partida.Fecha);
 
                 command.ExecuteNonQuery();
 

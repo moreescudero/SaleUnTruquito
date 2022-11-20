@@ -39,6 +39,36 @@ namespace Entidades_Deberia
             Assert.IsFalse(contraseñaCorrecta);
         }
 
+        [TestMethod]
+        public void BuscarFlor_DeberiaSerVerdadero()
+        {
+            Usuario usuario = new Usuario(0, "test", "test");
+            usuario.Cartas.Add(new Carta(2, "oro", EValores.Dos));
+            usuario.Cartas.Add(new Carta(7, "oro", EValores.SieteOro));
+            usuario.Cartas.Add(new Carta(1, "oro", EValores.Uno));
 
+            usuario.BuscarFlor();
+
+            Assert.IsTrue(usuario.SacoFlor);
+        }
+
+        [TestMethod]
+        public void BuscarFlor_DeveriaSerFalse()
+        {
+            Usuario usuario = new Usuario(0, "test", "test");
+            usuario.Cartas.Add(new Carta(2, "basto", EValores.Dos));
+            usuario.Cartas.Add(new Carta(7, "oro", EValores.SieteOro));
+            usuario.Cartas.Add(new Carta(1, "copa", EValores.Uno));
+
+            usuario.BuscarFlor();
+
+            Assert.IsFalse(usuario.SacoFlor);
+        }
+
+        [TestMethod]
+        public void DecirEnvido_Deberia()
+        {
+
+        }
     }
 }

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Sala));
             this.btn_Volver = new System.Windows.Forms.Button();
             this.lbl_Jugador2 = new System.Windows.Forms.Label();
             this.lbl_Jugador1 = new System.Windows.Forms.Label();
@@ -158,7 +157,7 @@
             // pic_Carta3Jug1
             // 
             this.pic_Carta3Jug1.BackColor = System.Drawing.Color.Transparent;
-            this.pic_Carta3Jug1.Image = ((System.Drawing.Image)(resources.GetObject("pic_Carta3Jug1.Image")));
+            this.pic_Carta3Jug1.Image = global::Vista.Properties.Resources.revero_carta;
             this.pic_Carta3Jug1.Location = new System.Drawing.Point(484, 566);
             this.pic_Carta3Jug1.Name = "pic_Carta3Jug1";
             this.pic_Carta3Jug1.Size = new System.Drawing.Size(105, 158);
@@ -169,7 +168,7 @@
             // pic_Carta2Jug1
             // 
             this.pic_Carta2Jug1.BackColor = System.Drawing.Color.Transparent;
-            this.pic_Carta2Jug1.Image = ((System.Drawing.Image)(resources.GetObject("pic_Carta2Jug1.Image")));
+            this.pic_Carta2Jug1.Image = global::Vista.Properties.Resources.revero_carta;
             this.pic_Carta2Jug1.Location = new System.Drawing.Point(372, 566);
             this.pic_Carta2Jug1.Name = "pic_Carta2Jug1";
             this.pic_Carta2Jug1.Size = new System.Drawing.Size(106, 158);
@@ -180,7 +179,7 @@
             // pic_Carta1Jug1
             // 
             this.pic_Carta1Jug1.BackColor = System.Drawing.Color.Transparent;
-            this.pic_Carta1Jug1.Image = ((System.Drawing.Image)(resources.GetObject("pic_Carta1Jug1.Image")));
+            this.pic_Carta1Jug1.Image = global::Vista.Properties.Resources.revero_carta;
             this.pic_Carta1Jug1.Location = new System.Drawing.Point(259, 566);
             this.pic_Carta1Jug1.Name = "pic_Carta1Jug1";
             this.pic_Carta1Jug1.Size = new System.Drawing.Size(107, 158);
@@ -191,7 +190,7 @@
             // pic_Carta1Jug2
             // 
             this.pic_Carta1Jug2.BackColor = System.Drawing.Color.Transparent;
-            this.pic_Carta1Jug2.Image = ((System.Drawing.Image)(resources.GetObject("pic_Carta1Jug2.Image")));
+            this.pic_Carta1Jug2.Image = global::Vista.Properties.Resources.revero_carta;
             this.pic_Carta1Jug2.Location = new System.Drawing.Point(259, 37);
             this.pic_Carta1Jug2.Name = "pic_Carta1Jug2";
             this.pic_Carta1Jug2.Size = new System.Drawing.Size(107, 158);
@@ -202,7 +201,7 @@
             // pic_Carta2Jug2
             // 
             this.pic_Carta2Jug2.BackColor = System.Drawing.Color.Transparent;
-            this.pic_Carta2Jug2.Image = ((System.Drawing.Image)(resources.GetObject("pic_Carta2Jug2.Image")));
+            this.pic_Carta2Jug2.Image = global::Vista.Properties.Resources.revero_carta;
             this.pic_Carta2Jug2.Location = new System.Drawing.Point(372, 37);
             this.pic_Carta2Jug2.Name = "pic_Carta2Jug2";
             this.pic_Carta2Jug2.Size = new System.Drawing.Size(106, 158);
@@ -213,7 +212,7 @@
             // pic_Carta3Jug2
             // 
             this.pic_Carta3Jug2.BackColor = System.Drawing.Color.Transparent;
-            this.pic_Carta3Jug2.Image = ((System.Drawing.Image)(resources.GetObject("pic_Carta3Jug2.Image")));
+            this.pic_Carta3Jug2.Image = global::Vista.Properties.Resources.revero_carta;
             this.pic_Carta3Jug2.Location = new System.Drawing.Point(484, 37);
             this.pic_Carta3Jug2.Name = "pic_Carta3Jug2";
             this.pic_Carta3Jug2.Size = new System.Drawing.Size(105, 158);

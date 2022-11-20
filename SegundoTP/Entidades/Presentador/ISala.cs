@@ -24,5 +24,6 @@ namespace Entidades.Presentador
         void CargarFondo();
         void TirarCartaEnMesa(string? carta, int jug);
         void LimpiarMesa();
+        void MostrarError(string mensaje);
     }
 }

@@ -131,11 +131,21 @@ namespace Entidades.Presentador
 
         public Partida DevolverPartidaElegida(int indice)
         {
-            Partida partida = partidas[indice];
-            partida.Id = (ObtenerUltimoID() + 1);
-            partidas.Remove(partida);
-
-            return partida;
+            if (partidas[indice] is not null)
+            {
+                Partida partida = partidas[indice];
+                partida.Id = (ObtenerUltimoID() + 1);
+                partidas.Remove(partida);
+                return partida;
+            }
+            throw new Exception("La partida ya comenzó");
+            //}
+            //catch (Exception ex)
+            //{
+            //    menu.HabilitarPanel = true;
+            //    menu.ErrorPanel = String.Empty;
+            //    menu.ErrorPanel = ex.Message;
+            //}
         }
 
     }

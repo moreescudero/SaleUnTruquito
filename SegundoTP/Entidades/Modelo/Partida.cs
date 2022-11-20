@@ -305,53 +305,53 @@ namespace Entidades.Modelo
         }
 
 
-        /// <summary>
-        /// devuelve la cantidad de envido que tiene un jugador, teniendo en cuenta si había alguna 
-        /// carta de número superior a 9 o si ambas eran ese tipo de cartas. 
-        /// </summary>
-        /// <param name="jugador"></param>
-        /// <returns></returns>
-        public int DecirEnvido(Usuario jugador)
-        {
-            int envido = 0;
-            for (int i = 0; i < jugador.Cartas.Count; i++)
-            {
-                for (int j = i + 1; j < jugador.Cartas.Count; j++)
-                {
-                    if (jugador.Cartas[i].Palo == jugador.Cartas[j].Palo)
-                    {
-                        int numeroUno = jugador.Cartas[i].Numero;
-                        int numeroDos = jugador.Cartas[j].Numero;
-                        if (numeroUno >= 10)
-                        {
-                            numeroUno = 20;
-                        }
-                        if (numeroDos >= 10)
-                        {
-                            numeroDos = 20;
-                        }
-                        if (numeroUno == 20 || numeroDos == 20)
-                        {
-                            if (numeroUno == 20 && numeroDos == 20)
-                            {
-                                envido = 20;
-                            }
-                            else
-                            {
-                                envido = numeroUno + numeroDos;
-                            }
-                        }
-                        else
-                        {
-                            envido = numeroUno + numeroDos + 20;
-                        }
+        ///// <summary>
+        ///// devuelve la cantidad de envido que tiene un jugador, teniendo en cuenta si había alguna 
+        ///// carta de número superior a 9 o si ambas eran ese tipo de cartas. 
+        ///// </summary>
+        ///// <param name="jugador"></param>
+        ///// <returns></returns>
+        //public int DecirEnvido(Usuario jugador)
+        //{
+        //    int envido = 0;
+        //    for (int i = 0; i < jugador.Cartas.Count; i++)
+        //    {
+        //        for (int j = i + 1; j < jugador.Cartas.Count; j++)
+        //        {
+        //            if (jugador.Cartas[i].Palo == jugador.Cartas[j].Palo)
+        //            {
+        //                int numeroUno = jugador.Cartas[i].Numero;
+        //                int numeroDos = jugador.Cartas[j].Numero;
+        //                if (numeroUno >= 10)
+        //                {
+        //                    numeroUno = 20;
+        //                }
+        //                if (numeroDos >= 10)
+        //                {
+        //                    numeroDos = 20;
+        //                }
+        //                if (numeroUno == 20 || numeroDos == 20)
+        //                {
+        //                    if (numeroUno == 20 && numeroDos == 20)
+        //                    {
+        //                        envido = 20;
+        //                    }
+        //                    else
+        //                    {
+        //                        envido = numeroUno + numeroDos;
+        //                    }
+        //                }
+        //                else
+        //                {
+        //                    envido = numeroUno + numeroDos + 20;
+        //                }
 
-                        break;
-                    }
-                }
-            }
-            return envido;
-        }
+        //                break;
+        //            }
+        //        }
+        //    }
+        //    return envido;
+        //}
 
 
         /// <summary>

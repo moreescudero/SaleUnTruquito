@@ -24,9 +24,9 @@ namespace Vista
             InitializeComponent();
             CargarFondo();
         }
-        public Frm_Sala (bool juegoActivo, Object obj) : this ()
+        public Frm_Sala (Object obj) : this ()
         {
-            presentador = new PresentadorSala(this, obj, juegoActivo);
+            presentador = new PresentadorSala(this, obj);
         }
         
         public string? UsuarioJugador1 { set { lbl_Jugador1.Text = value; } }
@@ -103,6 +103,11 @@ namespace Vista
             tmr_Partida.Interval = random.Next(500, 500 /*3000*/);
         }
 
+        public void MostrarError(string? mensaje)
+        {
+            MessageBox.Show(mensaje);
+        }
+
         /// <summary>
         /// Vuelve a setear todos los atributos para poder jugar nuevamente otra vuelta
         /// </summary>
@@ -112,8 +117,6 @@ namespace Vista
 
             lbl_CartasJugador1.Text = String.Empty;
             lbl_CartasJugador2.Text = String.Empty;
-            //lbl_ChatJug1.Text = String.Empty;
-            //lbl_ChatJug2.Text = String.Empty;
             lbl_Ganador.Text = String.Empty;
         }
 

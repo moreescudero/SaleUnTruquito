@@ -18,8 +18,9 @@ namespace Entidades.Modelo
         bool cantoEnvido = false;
         bool cantoFaltaEnvido = false;
         bool cantoTruco = false;
-        bool cantoRetruco = false;
-        bool cantoQuieroVale4 = false;
+        bool sacoFlor = false;
+        //bool cantoRetruco = false;
+        //bool cantoQuieroVale4 = false;
         int puntosPartida;
         int manosGanadas;
         int partidasGanadas;
@@ -51,8 +52,9 @@ namespace Entidades.Modelo
         public bool CantoEnvido { get { return cantoEnvido; } set { cantoEnvido = value; } } 
         public bool CantoFaltaEnvido { get { return cantoFaltaEnvido; } set { cantoFaltaEnvido = value; } } 
         public bool CantoTruco { get { return cantoTruco; } set { cantoTruco = value; } } 
-        public bool CantoRetruco { get { return cantoRetruco; } set { cantoRetruco = value; } } 
-        public bool CantoQuieroVale4 { get { return cantoQuieroVale4; } set { cantoQuieroVale4 = value; } } 
+        public bool SacoFlor { get { return sacoFlor; } set { sacoFlor = value; } }
+        //public bool CantoRetruco { get { return cantoRetruco; } set { cantoRetruco = value; } } 
+        //public bool CantoQuieroVale4 { get { return cantoQuieroVale4; } set { cantoQuieroVale4 = value; } } 
         public List<Carta> Cartas { get { return cartas; } set { cartas = value; } } 
         public List<Carta> CartasJugadas { get { return cartasJugadas; } set { cartasJugadas = value; } } 
         public Carta CartaJugada { get { return cartaJugada; } set { cartaJugada = value; } } 
@@ -77,8 +79,69 @@ namespace Entidades.Modelo
             }
             return false;
         }
+        
+        /// <summary>
+        /// busca que las 3 cartas del jugador sean del mismo palo
+        /// </summary>
+        /// <returns></returns>
+        public bool BuscarFlor()
+        {
+            if (cartas[0].Palo == cartas[1].Palo && cartas[1].Palo == cartas[2].Palo && cartas[0].Palo == cartas[2].Palo)
+            {
+                sacoFlor = true;
+                return true;
+            }
+            return false;
+        }
 
 
+        /// <summary>
+        /// devuelve la cantidad de envido que tiene un jugador, teniendo en cuenta si había alguna 
+        /// carta de número superior a 9 o si ambas eran ese tipo de cartas. 
+        /// </summary>
+        /// <param name="jugador"></param>
+        /// <returns></returns>
+        public int DecirEnvido(/*Usuario jugador*/)
+        {
+            int envido = 0;
+            for (int i = 0; i < cartas.Count; i++)
+            {
+                for (int j = i + 1; j < cartas.Count; j++)
+                {
+                    if (cartas[i].Palo == cartas[j].Palo)
+                    {
+                        int numeroUno = cartas[i].Numero;
+                        int numeroDos = cartas[j].Numero;
+                        if (numeroUno >= 10)
+                        {
+                            numeroUno = 20;
+                        }
+                        if (numeroDos >= 10)
+                        {
+                            numeroDos = 20;
+                        }
+                        if (numeroUno == 20 || numeroDos == 20)
+                        {
+                            if (numeroUno == 20 && numeroDos == 20)
+                            {
+                                envido = 20;
+                            }
+                            else
+                            {
+                                envido = numeroUno + numeroDos;
+                            }
+                        }
+                        else
+                        {
+                            envido = numeroUno + numeroDos + 20;
+                        }
+
+                        break;
+                    }
+                }
+            }
+            return envido;
+        }
 
         /// <summary>
         /// setea todos los atributos del usuario para que pueda jugar una nueva vuelta
@@ -92,8 +155,9 @@ namespace Entidades.Modelo
             cantoEnvido = false;
             cantoFaltaEnvido = false;
             cantoTruco = false;
-            cantoRetruco = false;
-            cantoQuieroVale4 = false;
+            sacoFlor = false;
+            //cantoRetruco = false;
+            //cantoQuieroVale4 = false;
         }
 
         /// <summary>

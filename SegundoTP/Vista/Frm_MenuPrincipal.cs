@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Vista
 {
@@ -51,36 +52,24 @@ namespace Vista
 
         private async void btn_AbirSala_Click(object sender, EventArgs e)
         {
-            listaTareas.Add(new Task(() =>
+            try
             {
-                Frm_Sala frm_sala = new Frm_Sala(false, presentador.DevolverPartidaElegida(indice));
-                frm_sala.ShowDialog();
+                //Object obj = ;
+                listaTareas.Add(new Task(() =>
+                {
+                    Frm_Sala frm_sala = new Frm_Sala(presentador.DevolverPartidaElegida(indice));
+                    frm_sala.ShowDialog();
+                }
+                ));
+                await CrearPartida();
+                presentador.CargarDataGridUsuarios();
             }
-            ));
-            await CrearPartida();
-            presentador.CargarDataGridUsuarios();
-        }
-
-        private void dgv_JugadoresDisponibles_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            //try
-            //{
-            //    presentador.CargarUsuarios(e.RowIndex);
-            //}
-            //catch (Exception ex)
-            //{
-            //    lbl_UsuariosCargados.Text = ex.Message;
-            //}
-            ////if (!jugadorUnoElegido)
-            ////{
-            ////    index = e.RowIndex;
-            ////    jugadorUnoElegido = true;
-            ////}
-            ////else if (!jugadorDosElegido)
-            ////{
-
-            ////    jugadorDosElegido = true;
-            ////}
+            catch (Exception ex)
+            {
+                pnl_ErrorPartidas.Enabled = true;
+                lbl_ErrorPartidasBaseDeDatos.Text = String.Empty;
+                lbl_ErrorPartidasBaseDeDatos.Text = ex.Message;
+            }
         }
 
         /// <summary>
@@ -124,9 +113,6 @@ namespace Vista
 
         private void btn_CrearSala_Click(object sender, EventArgs e)
         {
-            //jugar contra la máquina 
-            Frm_Sala frm_sala = new Frm_Sala(true, presentador.DevolverPartidaElegida(indice));
-            frm_sala.ShowDialog();
         }
 
         private void dgv_Salas_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
