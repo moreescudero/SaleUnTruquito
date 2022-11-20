@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Entidades.Presentador.PresentadorEstadistica" Collapsed="true">
+    <Position X="1.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEABAAAAEAAAAAACAAAAACAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Presentador\PresentadorEstadistica.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Presentador.PresentadorLogin" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIQAACAAAAAAAAgAAAAACAAAAFIA=</HashCode>
+      <FileName>Presentador\PresentadorLogin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Presentador.PresentadorMenuPrincipal" Collapsed="true">
+    <Position X="1.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAABCAAAAgAAAABgAAAAQAAAAAAQCAABAJIA=</HashCode>
+      <FileName>Presentador\PresentadorMenuPrincipal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Presentador.PresentadorSala" Collapsed="true">
+    <Position X="3" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wKCkBEAAAEAACEAwgAFAAIAAAgAAMUAICgABAAAAAIA=</HashCode>
+      <FileName>Presentador\PresentadorSala.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Modelo.Carta" Collapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAEAAAAAEAAAABAAAAAEAAAABAAA=</HashCode>
+      <FileName>Modelo\Carta.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Modelo.ConexionPartidas" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAgAABAAAAAAQAAAAIAAAQAAAAAAA=</HashCode>
+      <FileName>Modelo\ConexionPartidas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Modelo.ConexionUsuarios" Collapsed="true">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAIAAAAIAABCAAAAAQAAAAAABAQAAAAAAA=</HashCode>
+      <FileName>Modelo\ConexionUsuarios.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Modelo.ManejadorArchivos" Collapsed="true">
+    <Position X="5.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAA=</HashCode>
+      <FileName>Modelo\ManejadorArchivos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Modelo.Mazo" Collapsed="true">
+    <Position X="7.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Modelo\Mazo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Modelo.Partida" Collapsed="true">
+    <Position X="9" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAGgAACAUQAJIMAIgFCAAAQCAAAEAAgAIEAIACBAgA=</HashCode>
+      <FileName>Modelo\Partida.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Modelo.Serializador&lt;T&gt;" Collapsed="true">
+    <Position X="5.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAEAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Modelo\Serializador.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Modelo.Usuario" Collapsed="true">
+    <Position X="7.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BEAGAMBABAJAAgAAQggCBMAIgAyQAMAIEcQBAJXAAhA=</HashCode>
+      <FileName>Modelo\Usuario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Entidades.Presentador.IEstadistica" Collapsed="true">
+    <Position X="1.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAIQAAAAAAAAAACAAAAAAAAgAAAAAAACAAA=</HashCode>
+      <FileName>Presentador\IEstadistica.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Entidades.Presentador.ILogin" Collapsed="true">
+    <Position X="3" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACIAAAAAABAAAAAAAAAAAIAAAAkIAAA=</HashCode>
+      <FileName>Presentador\ILogin.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Entidades.Presentador.IMenuPrincipal" Collapsed="true">
+    <Position X="1.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAgAAgAAAAAhAAAIAAAQAAAAAAABAAAA=</HashCode>
+      <FileName>Presentador\IMenuPrincipal.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Entidades.Presentador.ISala" Collapsed="true">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAWAAAAAAAAQAEgAAAAACoAYAAA=</HashCode>
+      <FileName>Presentador\ISala.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Entidades.Modelo.EValores" Collapsed="true">
+    <Position X="5.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACBiAAAAIAAQAAAAABAACAAADAQAAAAAAAAAAAAAgAI=</HashCode>
+      <FileName>Modelo\Carta.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

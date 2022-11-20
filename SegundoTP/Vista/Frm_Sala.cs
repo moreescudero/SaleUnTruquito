@@ -39,11 +39,8 @@ namespace Vista
         public string? UsuarioJugador1 { set { lbl_Jugador1.Text = value; } }
         public string? UsuarioJugador2 { set { lbl_Jugador2.Text = value; } }
         public string? Chat { get { return rtx_ChatJugadores.Text; } set { rtx_ChatJugadores.Text = value; } }
-        public string? Ganador { get { return lbl_Ganador.Text; } set { lbl_Ganador.Text = value; } }
         public string? PuntosJug1 { set { lbl_PuntosJug1.Text = value; } }
         public string? PuntosJug2 { set { lbl_PuntosJug2.Text = value; } }
-        public string? CartasJug1 { get { return lbl_CartasJugador1.Text; } set { lbl_CartasJugador1.Text = value; } }
-        public string? CartasJug2 { get { return lbl_CartasJugador2.Text; } set { lbl_CartasJugador2.Text = value; } }
         public bool HayEnvido { get { return hayEnvido; } set { hayEnvido = value; } }
 
         private void Frm_Sala_Load(object sender, EventArgs e)
@@ -107,7 +104,7 @@ namespace Vista
         private void ModificarIntervalo()
         {
             Random random = new Random();
-            tmr_Partida.Interval = random.Next(500, 500 /*3000*/);
+            tmr_Partida.Interval = random.Next(500, 2500);
         }
 
         public void MostrarError(string? mensaje)
@@ -121,10 +118,6 @@ namespace Vista
         public void LimpiarVuelta()
         {
             hayEnvido = true;
-
-            lbl_CartasJugador1.Text = String.Empty;
-            lbl_CartasJugador2.Text = String.Empty;
-            lbl_Ganador.Text = String.Empty;
         }
 
         private void btn_Volver_Click(object sender, EventArgs e)

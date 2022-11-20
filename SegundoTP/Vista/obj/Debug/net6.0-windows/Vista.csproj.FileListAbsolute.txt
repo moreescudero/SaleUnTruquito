@@ -74,7 +74,6 @@ C:\Users\more\Desktop\TP2.Morena.Escudero\SegundoTP\Vista\obj\Debug\net6.0-windo
 C:\Users\more\Desktop\TP2.Morena.Escudero\SegundoTP\Vista\obj\Debug\net6.0-windows\Vista.Frm_Estadistica.resources
 C:\Users\more\Desktop\TP2.Morena.Escudero\SegundoTP\Vista\obj\Debug\net6.0-windows\Vista.Frm_Login.resources
 C:\Users\more\Desktop\TP2.Morena.Escudero\SegundoTP\Vista\obj\Debug\net6.0-windows\Vista.Frm_MenuPrincipal.resources
-C:\Users\more\Desktop\TP2.Morena.Escudero\SegundoTP\Vista\obj\Debug\net6.0-windows\Vista.Frm_Partida.resources
 C:\Users\more\Desktop\TP2.Morena.Escudero\SegundoTP\Vista\obj\Debug\net6.0-windows\Vista.Frm_Sala.resources
 C:\Users\more\Desktop\TP2.Morena.Escudero\SegundoTP\Vista\obj\Debug\net6.0-windows\Vista.Properties.Resources.resources
 C:\Users\more\Desktop\TP2.Morena.Escudero\SegundoTP\Vista\obj\Debug\net6.0-windows\Vista.csproj.GenerateResource.cache

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Vista.Properties;
 
 namespace Vista
 {
@@ -35,12 +36,28 @@ namespace Vista
         {
             presentador.CargarDgv();
             presentador.Cargar();
+            CargarFondo();
         }
 
         public void CargarDgv(Object fuente)
         {
             dgv_PartidasGanadas.DataSource = null;
             dgv_PartidasGanadas.DataSource = fuente;
+        }
+
+        public void CargarFondo()
+        {
+            Random random = new Random();
+            int rnd = random.Next(0, 2);
+
+            if (rnd == 1)
+            {
+                this.BackgroundImage = Resources.barsito;
+            }
+            else
+            {
+                this.BackgroundImage = Resources.pastito;
+            }
         }
     }
 }

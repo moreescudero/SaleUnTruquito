@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_MenuPrincipal));
             this.dgv_JugadoresDisponibles = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreUsuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -115,7 +116,7 @@
             // btn_AbirSala
             // 
             this.btn_AbirSala.Enabled = false;
-            this.btn_AbirSala.Location = new System.Drawing.Point(109, 105);
+            this.btn_AbirSala.Location = new System.Drawing.Point(109, 130);
             this.btn_AbirSala.Name = "btn_AbirSala";
             this.btn_AbirSala.Size = new System.Drawing.Size(99, 23);
             this.btn_AbirSala.TabIndex = 1;
@@ -125,7 +126,7 @@
             // 
             // btn_Estadistica
             // 
-            this.btn_Estadistica.Location = new System.Drawing.Point(109, 248);
+            this.btn_Estadistica.Location = new System.Drawing.Point(109, 202);
             this.btn_Estadistica.Name = "btn_Estadistica";
             this.btn_Estadistica.Size = new System.Drawing.Size(99, 23);
             this.btn_Estadistica.TabIndex = 3;
@@ -136,9 +137,10 @@
             // lbl_BienvenidoJugador
             // 
             this.lbl_BienvenidoJugador.AutoSize = true;
+            this.lbl_BienvenidoJugador.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_BienvenidoJugador.Location = new System.Drawing.Point(24, 30);
             this.lbl_BienvenidoJugador.Name = "lbl_BienvenidoJugador";
-            this.lbl_BienvenidoJugador.Size = new System.Drawing.Size(69, 15);
+            this.lbl_BienvenidoJugador.Size = new System.Drawing.Size(91, 20);
             this.lbl_BienvenidoJugador.TabIndex = 4;
             this.lbl_BienvenidoJugador.Text = "Bienvenido ";
             // 
@@ -237,7 +239,7 @@
             this.pnl_Reglas.Controls.Add(this.rtx_Reglas);
             this.pnl_Reglas.Location = new System.Drawing.Point(62, 48);
             this.pnl_Reglas.Name = "pnl_Reglas";
-            this.pnl_Reglas.Size = new System.Drawing.Size(667, 311);
+            this.pnl_Reglas.Size = new System.Drawing.Size(667, 309);
             this.pnl_Reglas.TabIndex = 9;
             this.pnl_Reglas.Visible = false;
             // 
@@ -254,6 +256,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.pnl_Reglas);
             this.Controls.Add(this.btn_Reglas);
@@ -264,8 +267,11 @@
             this.Controls.Add(this.btn_Estadistica);
             this.Controls.Add(this.btn_AbirSala);
             this.Controls.Add(this.dgv_JugadoresDisponibles);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Frm_MenuPrincipal";
-            this.Text = "Frm_MenuPrincipal";
+            this.Text = " ";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Frm_MenuPrincipal_FormClosed);
             this.Load += new System.EventHandler(this.Frm_MenuPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_JugadoresDisponibles)).EndInit();

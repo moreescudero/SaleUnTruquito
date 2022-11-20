@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Login));
             this.txt_Contraseña = new System.Windows.Forms.TextBox();
             this.txt_Usuario = new System.Windows.Forms.TextBox();
             this.btn_Salir = new System.Windows.Forms.Button();
@@ -90,6 +91,7 @@
             // lbl_UsuarioIncorrecto
             // 
             this.lbl_UsuarioIncorrecto.AutoSize = true;
+            this.lbl_UsuarioIncorrecto.BackColor = System.Drawing.Color.Transparent;
             this.lbl_UsuarioIncorrecto.Location = new System.Drawing.Point(148, 85);
             this.lbl_UsuarioIncorrecto.Name = "lbl_UsuarioIncorrecto";
             this.lbl_UsuarioIncorrecto.Size = new System.Drawing.Size(0, 15);
@@ -98,6 +100,7 @@
             // lbl_ContraseñaIncorrecta
             // 
             this.lbl_ContraseñaIncorrecta.AutoSize = true;
+            this.lbl_ContraseñaIncorrecta.BackColor = System.Drawing.Color.Transparent;
             this.lbl_ContraseñaIncorrecta.Location = new System.Drawing.Point(148, 155);
             this.lbl_ContraseñaIncorrecta.Name = "lbl_ContraseñaIncorrecta";
             this.lbl_ContraseñaIncorrecta.Size = new System.Drawing.Size(0, 15);
@@ -106,6 +109,7 @@
             // lbl_CrearUsuario
             // 
             this.lbl_CrearUsuario.AutoSize = true;
+            this.lbl_CrearUsuario.BackColor = System.Drawing.Color.Transparent;
             this.lbl_CrearUsuario.Location = new System.Drawing.Point(112, 259);
             this.lbl_CrearUsuario.Name = "lbl_CrearUsuario";
             this.lbl_CrearUsuario.Size = new System.Drawing.Size(189, 15);
@@ -116,12 +120,13 @@
             // chk_MostrarContraseña
             // 
             this.chk_MostrarContraseña.AutoSize = true;
+            this.chk_MostrarContraseña.BackColor = System.Drawing.Color.Transparent;
             this.chk_MostrarContraseña.Location = new System.Drawing.Point(275, 131);
             this.chk_MostrarContraseña.Name = "chk_MostrarContraseña";
             this.chk_MostrarContraseña.Size = new System.Drawing.Size(130, 19);
             this.chk_MostrarContraseña.TabIndex = 8;
             this.chk_MostrarContraseña.Text = "Mostrar Contraseña";
-            this.chk_MostrarContraseña.UseVisualStyleBackColor = true;
+            this.chk_MostrarContraseña.UseVisualStyleBackColor = false;
             this.chk_MostrarContraseña.Visible = false;
             this.chk_MostrarContraseña.CheckedChanged += new System.EventHandler(this.chk_MostrarContraseña_CheckedChanged);
             // 
@@ -129,7 +134,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::Vista.Properties.Resources.pastito;
             this.ClientSize = new System.Drawing.Size(421, 292);
+            this.ControlBox = false;
             this.Controls.Add(this.chk_MostrarContraseña);
             this.Controls.Add(this.lbl_CrearUsuario);
             this.Controls.Add(this.lbl_ContraseñaIncorrecta);
@@ -139,8 +146,10 @@
             this.Controls.Add(this.btn_Salir);
             this.Controls.Add(this.txt_Usuario);
             this.Controls.Add(this.txt_Contraseña);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_Login";
-            this.Text = "Form1";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.Frm_Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

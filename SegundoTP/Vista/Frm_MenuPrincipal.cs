@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Vista.Properties;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Vista
@@ -35,6 +36,7 @@ namespace Vista
 
         private void Frm_MenuPrincipal_Load(object sender, EventArgs e)
         {
+            CargarFondo();
             presentador.MostrarJugadorActivo();
             presentador.CargarDataGridUsuarios();
             presentador.CargarDataGridPartidas();
@@ -146,6 +148,25 @@ namespace Vista
             else
             {
                 pnl_Reglas.Visible = false;
+            }
+        }
+
+        public void CargarFondo()
+        {
+            Random random = new Random();
+            int rnd = random.Next(0, 2);
+
+            if (rnd == 1)
+            {
+                this.BackgroundImage = Resources.barsito;
+                pnl_ErrorPartidas.BackgroundImage = Resources.barsito;
+                pnl_Reglas.BackgroundImage = Resources.barsito;
+            }
+            else
+            {
+                this.BackgroundImage = Resources.pastito;
+                pnl_ErrorPartidas.BackgroundImage = Resources.pastito;
+                pnl_Reglas.BackgroundImage = Resources.pastito;
             }
         }
     }
