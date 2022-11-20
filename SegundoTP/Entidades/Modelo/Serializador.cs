@@ -49,21 +49,24 @@ namespace Entidades.Modelo
             T datos = default;
 
             string completo = ruta + @"/" + archivo;
-
-            if (!Directory.Exists(ruta))
+            try
             {
-                Directory.CreateDirectory(ruta); // no tiene sentido que lo cree si lo tiene que leer
+                if (Directory.Exists(ruta))
+                {
+                    JsonSerializerOptions opcion = new JsonSerializerOptions()
+                    {
+                        Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase) },
+                    };
+
+                    string archivoJSon = File.ReadAllText(completo);
+                    datos = JsonSerializer.Deserialize<T>(archivoJSon, opcion);
+                }
+                return datos;
             }
-
-            JsonSerializerOptions opcion = new JsonSerializerOptions()
+            catch (Exception ex)
             {
-                Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase) },
-            };
-
-            string archivoJSon = File.ReadAllText(completo);
-            datos = JsonSerializer.Deserialize<T>(archivoJSon, opcion);
-
-            return datos;
+                throw new Exception("fallo al deserializar");
+            }
         }
     }
 }

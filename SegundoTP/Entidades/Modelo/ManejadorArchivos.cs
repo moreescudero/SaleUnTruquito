@@ -8,13 +8,6 @@ namespace Entidades.Modelo
 {
     public static class ManejadorArchivos
     {
-        //static string? ruta;
-
-        //static ManejadorArchivos()
-        //{
-
-        //}
-
         /// <summary>
         /// escribe un archivo
         /// </summary>
@@ -22,22 +15,26 @@ namespace Entidades.Modelo
         /// <param name="archivo"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static bool EscribirArchivo(string? mensaje, /*string? archivo,*/ string? nombre)
+        public static bool EscribirArchivo(string? mensaje, string? nombre)
         {
             string? ruta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); //consigue la ruta desde cualquier pc
             ruta += @"/Partida"; //la carpeta
             string? completa = ruta + @"/" + nombre + ".txt";
             try
             {
-                if (!Directory.Exists(ruta))
+                if (mensaje is not null && nombre is not null)
                 {
-                    Directory.CreateDirectory(ruta);
+                    if (!Directory.Exists(ruta))
+                    {
+                        Directory.CreateDirectory(ruta);
+                    }
+                    using (StreamWriter sw = new StreamWriter(completa))
+                    {
+                        sw.WriteLine(mensaje);
+                    }
+                    return true;
                 }
-                using (StreamWriter sw = new StreamWriter(completa))
-                {
-                    sw.WriteLine(mensaje);
-                }
-                return true;
+                return false;
             }
             catch (Exception)
             {

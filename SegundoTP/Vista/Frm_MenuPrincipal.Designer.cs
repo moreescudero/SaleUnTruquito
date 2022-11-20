@@ -36,7 +36,6 @@
             this.PartidasPerdidas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btn_AbirSala = new System.Windows.Forms.Button();
-            this.btn_CrearSala = new System.Windows.Forms.Button();
             this.btn_Estadistica = new System.Windows.Forms.Button();
             this.lbl_BienvenidoJugador = new System.Windows.Forms.Label();
             this.lbl_UsuariosCargados = new System.Windows.Forms.Label();
@@ -123,16 +122,6 @@
             this.btn_AbirSala.Text = "Abrir Sala";
             this.btn_AbirSala.UseVisualStyleBackColor = true;
             this.btn_AbirSala.Click += new System.EventHandler(this.btn_AbirSala_Click);
-            // 
-            // btn_CrearSala
-            // 
-            this.btn_CrearSala.Location = new System.Drawing.Point(109, 177);
-            this.btn_CrearSala.Name = "btn_CrearSala";
-            this.btn_CrearSala.Size = new System.Drawing.Size(99, 23);
-            this.btn_CrearSala.TabIndex = 2;
-            this.btn_CrearSala.Text = "Crear Sala";
-            this.btn_CrearSala.UseVisualStyleBackColor = true;
-            this.btn_CrearSala.Click += new System.EventHandler(this.btn_CrearSala_Click);
             // 
             // btn_Estadistica
             // 
@@ -248,7 +237,7 @@
             this.pnl_Reglas.Controls.Add(this.rtx_Reglas);
             this.pnl_Reglas.Location = new System.Drawing.Point(62, 48);
             this.pnl_Reglas.Name = "pnl_Reglas";
-            this.pnl_Reglas.Size = new System.Drawing.Size(667, 326);
+            this.pnl_Reglas.Size = new System.Drawing.Size(667, 311);
             this.pnl_Reglas.TabIndex = 9;
             this.pnl_Reglas.Visible = false;
             // 
@@ -273,7 +262,6 @@
             this.Controls.Add(this.lbl_UsuariosCargados);
             this.Controls.Add(this.lbl_BienvenidoJugador);
             this.Controls.Add(this.btn_Estadistica);
-            this.Controls.Add(this.btn_CrearSala);
             this.Controls.Add(this.btn_AbirSala);
             this.Controls.Add(this.dgv_JugadoresDisponibles);
             this.Name = "Frm_MenuPrincipal";
@@ -296,7 +284,6 @@
 
         private DataGridView dgv_JugadoresDisponibles;
         private Button btn_AbirSala;
-        private Button btn_CrearSala;
         private Button btn_Estadistica;
         private BindingSource usuarioBindingSource;
         private Label lbl_BienvenidoJugador;

@@ -57,8 +57,15 @@ namespace Vista
                 //Object obj = ;
                 listaTareas.Add(new Task(() =>
                 {
-                    Frm_Sala frm_sala = new Frm_Sala(presentador.DevolverPartidaElegida(indice));
-                    frm_sala.ShowDialog();
+                    try
+                    {
+                        Frm_Sala frm_sala = new Frm_Sala(presentador.DevolverPartidaElegida(indice));
+                        frm_sala.ShowDialog();
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
                 ));
                 await CrearPartida();

@@ -26,7 +26,14 @@ namespace Vista
         }
         public Frm_Sala (Object obj) : this ()
         {
-            presentador = new PresentadorSala(this, obj);
+            try
+            {
+                presentador = new PresentadorSala(this, obj);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message); 
+            }
         }
         
         public string? UsuarioJugador1 { set { lbl_Jugador1.Text = value; } }

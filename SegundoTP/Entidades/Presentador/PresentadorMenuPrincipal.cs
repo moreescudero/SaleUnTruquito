@@ -68,8 +68,9 @@ namespace Entidades.Presentador
         /// </summary>
         public void CargarDataGridUsuarios()
         {
-            // que en este dgv se muestren los usuarios con más cantidad de partidas ganadas
-            menu.CargarDgvUsuarios(usuarios);
+            ConexionUsuarios conexion = new ConexionUsuarios();
+            List<Usuario> usuarioTop5 = conexion.ObtenerTop5Usuarios();
+            menu.CargarDgvUsuarios(usuarioTop5);
         }
 
         /// <summary>

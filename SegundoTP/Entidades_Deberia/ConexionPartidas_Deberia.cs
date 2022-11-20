@@ -13,7 +13,7 @@ namespace Entidades_Deberia
     [TestClass]
     public class ConexionPartidas_Deberia
     {
-        private void BorrarPartida(string? mensaje, int parametro)
+        private void BorrarPartida(string? mensaje, string? parametro)
         {
             SqlConnection connection = new SqlConnection(@"Data Source = 192.168.0.163 ; Initial Catalog = truco ; User ID = more ; Password = segtp ;");
             SqlCommand command = connection.CreateCommand();
@@ -25,12 +25,12 @@ namespace Entidades_Deberia
             command.CommandText = mensaje;
 
             command.Parameters.Clear();
-            command.Parameters.AddWithValue("@Parametro", parametro);
+            command.Parameters.AddWithValue("@Ganador", parametro);
 
             command.ExecuteNonQuery();
         }
 
-        private Partida? ObtenerPartidaPorId(int idAux)
+        private Partida? ObtenerPartidaPorGanador(string? auxGanador)
         {
             SqlConnection connection = new SqlConnection(@"Data Source = 192.168.0.163 ; Initial Catalog = truco ; User ID = more ; Password = segtp ;");
             SqlCommand command = connection.CreateCommand();
@@ -41,10 +41,10 @@ namespace Entidades_Deberia
 
             command.Connection = connection;
             command.CommandType = CommandType.Text;
-            command.CommandText = "select * from Partidas where Id = @Id";
+            command.CommandText = "select * from Partidas where Ganador = @Ganador";
 
             command.Parameters.Clear();
-            command.Parameters.AddWithValue("@Id", idAux);
+            command.Parameters.AddWithValue("@Ganador", auxGanador);
 
             SqlDataReader dataReader = command.ExecuteReader();
 
@@ -114,20 +114,19 @@ namespace Entidades_Deberia
             {
                 if(item == partidas.Last())
                 {
-                    id = partidas.Last().Id + 1;
+                    id = item.Id + 1;
                 }
             }
-            Partida partida = new Partida(id, "more", new DateTime(2022, 11, 20), "asd");
+            Partida partida = new Partida(id, "prueba", new DateTime(2022, 11, 20), "pruebaP");
             
             conexion.AgregarPartida(partida);
-            Partida? partidaDevuelta = ObtenerPartidaPorId(id);
-            
+            Partida? partidaDevuelta = ObtenerPartidaPorGanador("prueba");
+
             Assert.IsNotNull(partidaDevuelta);
-            Assert.AreEqual(partida.Id, partidaDevuelta.Id);
             Assert.AreEqual(partida.Ganador, partidaDevuelta.Ganador);
             Assert.AreEqual(partida.Perdedor, partidaDevuelta.Perdedor);
 
-            BorrarPartida(@"delete from Partidas where Id = @Id", id);
+            BorrarPartida(@"delete from Partidas where Ganador = @Ganador", partidaDevuelta.Ganador);
         }
     }
 }

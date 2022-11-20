@@ -35,7 +35,7 @@ namespace Entidades.Modelo
                 List<Usuario> usuarios = new List<Usuario>();
                 connection.Open();
 
-                Comando("select * from Usuarios");
+                Comando("select * from Usuarios order by Id asc");
 
                 SqlDataReader dataReader = command.ExecuteReader();
 
@@ -63,6 +63,44 @@ namespace Entidades.Modelo
             {
                 throw new Exception("Ocurrio un error en la obtención de usuarios");
             }
+        }
+
+        public List<Usuario> ObtenerTop5Usuarios()
+        {
+            try
+            {
+                List<Usuario> usuarios = new List<Usuario>();
+                connection.Open();
+
+                Comando("select top(5) * from Usuarios order by PartidasGanadas desc");
+
+                SqlDataReader dataReader = command.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    int id = dataReader.GetInt32(0);
+                    string nombreUsuario = dataReader.GetString(1);
+                    string contraseña = dataReader.GetString(2);
+                    int partidasGanadas = dataReader.GetInt32(3);
+                    int partidasPerdidas = dataReader.GetInt32(4);
+                    int cantAnchosDeEspada = dataReader.GetInt32(5);
+                    int cantSacoFaltaEnvido = dataReader.GetInt32(6);
+
+                    Usuario usuario = new Usuario(id, nombreUsuario, contraseña, partidasGanadas, partidasPerdidas, cantAnchosDeEspada, cantSacoFaltaEnvido);
+                    usuarios.Add(usuario);
+                }
+
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+                return usuarios;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Ocurrio un error en la obtención de top 5 usuarios");
+            }
+
         }
 
         /// <summary>
@@ -114,14 +152,14 @@ namespace Entidades.Modelo
 
                 foreach (Usuario usuario in usuarios)
                 {
-                    Comando("update Usuarios set PartidasGanadas = @PartidasGanadas, PartidasPerdidas = @PartidasPerdidas, AnchosEspadaObtenidos = @AnchosEspadaObtenidos, CantFaltaEnvidoJugados = @CantFaltaEnvidoJugados where Id = @Id");
+                    Comando("update Usuarios set PartidasGanadas = @PartidasGanadas, PartidasPerdidas = @PartidasPerdidas, AnchosEspadaObtenidos = @AnchosEspadaObtenidos, CantFaltaEnvidoJugados = @CantFaltaEnvidoJugados where Usuario = @Usuario");
 
                     command.Parameters.Clear();
                     command.Parameters.AddWithValue("@PartidasGanadas", usuario.PartidasGanadas);
                     command.Parameters.AddWithValue("@PartidasPerdidas", usuario.PartidasPerdidas);
                     command.Parameters.AddWithValue("@AnchosEspadaObtenidos", usuario.CantAnchosDeEspada);
                     command.Parameters.AddWithValue("@CantFaltaEnvidoJugados", usuario.CantSacoFaltaEnvido);
-                    command.Parameters.AddWithValue("@Id", usuario.Id);
+                    command.Parameters.AddWithValue("@Usuario", usuario.NombreUsuario);
 
                     command.ExecuteNonQuery();
                 }

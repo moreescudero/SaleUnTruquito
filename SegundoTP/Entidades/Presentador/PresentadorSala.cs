@@ -25,8 +25,6 @@ namespace Entidades.Presentador
         int envidoJug2;
         bool primeraMano = true;
         bool seCantoTruco = false;
-        //bool seCantoRetruco = false;
-        //bool seCantoQuieroVale4 = false;
         bool decirEnvido = false;
         bool seContestoTruco = false;
 
@@ -36,24 +34,38 @@ namespace Entidades.Presentador
             this.partida = partida as Partida;
             if(this.partida is not null)
             {
-                Asignar();
+                try
+                {
+                    Asignar();
+                }
+                catch(Exception ex)
+                {
+                    throw new Exception();
+                }
             }
         }
 
         private void Asignar()
         {
-            jugadores = this.partida.Jugadores;
-            jugadores[0].EsMano = true;
-            delTerminarVuelta = sala.LimpiarVuelta;
-            delTerminarVuelta += LimpiarVuelta;
-            delTerminarVuelta += sala.LimpiarMesa;
-            delTerminarVuelta += this.partida.FinalizarVuelta;
-            delTerminarVuelta += this.partida.ActivarEventoMazo;
-            delTerminarPartida = sala.FrenarTimer;
-            delTerminarPartida += this.partida.ActivarEventoFinalizarPartida;
-            delTerminarPartida += AgregarPartida;
-            sala.UsuarioJugador1 = jugadores[0].NombreUsuario;
-            sala.UsuarioJugador2 = jugadores[1].NombreUsuario;
+            try
+            {
+                jugadores = this.partida.Jugadores;
+                jugadores[0].EsMano = true;
+                delTerminarVuelta = sala.LimpiarVuelta;
+                delTerminarVuelta += LimpiarVuelta;
+                delTerminarVuelta += sala.LimpiarMesa;
+                delTerminarVuelta += this.partida.FinalizarVuelta;
+                delTerminarVuelta += this.partida.ActivarEventoMazo;
+                delTerminarPartida = sala.FrenarTimer;
+                delTerminarPartida += this.partida.ActivarEventoFinalizarPartida;
+                delTerminarPartida += AgregarPartida;
+                sala.UsuarioJugador1 = jugadores[0].NombreUsuario;
+                sala.UsuarioJugador2 = jugadores[1].NombreUsuario;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         /// <summary>

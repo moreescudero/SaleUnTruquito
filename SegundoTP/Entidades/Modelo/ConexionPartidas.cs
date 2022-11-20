@@ -40,7 +40,7 @@ namespace Entidades.Modelo
                 List<Partida> partidas = new List<Partida>();
                 connection.Open();
 
-                Comando("select * from Partidas");
+                Comando("select * from Partidas order by Id asc");
 
                 SqlDataReader dataReader = command.ExecuteReader();
 
@@ -103,6 +103,7 @@ namespace Entidades.Modelo
                 throw new Exception("ocurrio un error en la obtención de las partidas de " + ganadorPartida);
             }
         }
+
 
         /// <summary>
         /// agrega una partida a la base de datos

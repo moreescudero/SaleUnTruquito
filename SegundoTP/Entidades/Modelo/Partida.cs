@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -94,9 +95,16 @@ namespace Entidades.Modelo
         /// </summary>
         public void ActivarEventoMazo()
         {
-            Mazo mazoAux = Serializador<Mazo>.LeerJSon("mazo.json");
-            List<Carta> mazo = mazoAux.Mazos;
-            eventoMazo(mazo);
+            try
+            {
+                Mazo mazoAux = Serializador<Mazo>.LeerJSon("mazo.json");
+                List<Carta> mazo = mazoAux.Mazos;
+                eventoMazo(mazo);
+            }
+            catch (Exception)
+            {
+                throw new Exception("error al obtener el mazo");
+            }
         }
 
         /// <summary>

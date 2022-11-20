@@ -79,12 +79,6 @@ namespace Entidades_Deberia
             partida.Repartir(listaMazo);
         }
 
-        //[TestMethod]
-        //public void ActivarEventoFinalizarPartida_Deberia()
-        //{
-
-        //}
-
         [TestMethod]
         public void Jugar_DeberiaJug1TirarSuMejorCarta()
         {
