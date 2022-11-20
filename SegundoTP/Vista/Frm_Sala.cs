@@ -104,7 +104,7 @@ namespace Vista
         private void ModificarIntervalo()
         {
             Random random = new Random();
-            tmr_Partida.Interval = random.Next(500, 2500);
+            tmr_Partida.Interval = random.Next(500, 1500);
         }
 
         public void MostrarError(string? mensaje)

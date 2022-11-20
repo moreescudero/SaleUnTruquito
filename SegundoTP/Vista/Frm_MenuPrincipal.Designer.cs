@@ -247,6 +247,7 @@
             // lbl_Titulo
             // 
             this.lbl_Titulo.AutoSize = true;
+            this.lbl_Titulo.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Titulo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_Titulo.Location = new System.Drawing.Point(21, 19);
             this.lbl_Titulo.Name = "lbl_Titulo";
